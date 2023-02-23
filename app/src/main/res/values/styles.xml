@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="headerText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="button" parent="@android:style/Widget.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#BDFFD0</item>
+        <item name="android:minHeight">0dip</item>
+        <item name="android:minWidth">0dip</item>
+        <item name="android:padding">0dp</item>
+    </style>
+</resources>
