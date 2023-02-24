@@ -38,35 +38,48 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="14sp"
-            tools:text="День 1" />
+            tools:text="09:21" />
 
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_exercises"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textColorHint="@color/white"
-        android:queryHint="Добавить упражнение"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:searchIcon="@android:drawable/ic_menu_search" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_exercises_list"
+        android:id="@+id/rv_exercises"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="12dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/cv_buttonAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:listitem="@layout/item_exercise" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#1E2A36"
+        app:cardCornerRadius="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_exercises"
-        tools:listitem="@layout/item_exercise_add"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/rv_exercises">
+
+        <Button
+            style="@style/buttonAdd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:background="@drawable/button_background"
+            android:text="@string/startTrain"
+            android:theme="@style/buttonAdd" />
+
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

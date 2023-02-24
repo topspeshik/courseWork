@@ -48,6 +48,14 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:contentDescription="@string/add_new_exercise" />
+
 
     </LinearLayout>
 

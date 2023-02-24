@@ -15,4 +15,5 @@
     <string name="reps">Повторения</string>
     <string name="kg">Килограммы</string>
     <string name="addExercise">Добавить</string>
+    <string name="startTrain">Начать тренировку</string>
 </resources>
