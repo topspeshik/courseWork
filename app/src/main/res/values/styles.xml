@@ -20,5 +20,6 @@
         <item name="android:minWidth">0dip</item>
         <item name="android:padding">0dp</item>
         <item name="colorPrimary">#6A6A6A</item>
+        <item name="cornerRadius">132dp</item>
     </style>
 </resources>
