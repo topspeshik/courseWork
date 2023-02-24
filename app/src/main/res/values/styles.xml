@@ -12,4 +12,13 @@
         <item name="android:minWidth">0dip</item>
         <item name="android:padding">0dp</item>
     </style>
+
+    <style name="buttonAdd" parent="@android:style/Widget.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:minHeight">0dip</item>
+        <item name="android:minWidth">0dip</item>
+        <item name="android:padding">0dp</item>
+        <item name="colorPrimary">#6A6A6A</item>
+    </style>
 </resources>

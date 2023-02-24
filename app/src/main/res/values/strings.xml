@@ -9,4 +9,10 @@
     <string name="backReady"><![CDATA[< Готово]]></string>
     <string name="add_new_exercise">add new exercise</string>
     <string name="exercise_image">exercise image</string>
+    <string name="backArrow"><![CDATA[<]]></string>
+    <string name="exercise_img">Exercise image</string>
+    <string name="sets">Подходы</string>
+    <string name="reps">Повторения</string>
+    <string name="kg">Килограммы</string>
+    <string name="addExercise">Добавить</string>
 </resources>
