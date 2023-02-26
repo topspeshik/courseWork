@@ -17,7 +17,7 @@
 
         <Button
             style="@style/button"
-            android:background="@drawable/button_background"
+            android:background="@drawable/button_blank_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="30"
@@ -45,8 +45,8 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_exercises"
+    <SearchView
+        android:id="@+id/svExercises"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
@@ -59,7 +59,7 @@
         app:searchIcon="@android:drawable/ic_menu_search" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_exercises_list"
+        android:id="@+id/rvExercisesList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="12dp"
@@ -67,8 +67,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_exercises"
+        app:layout_constraintTop_toBottomOf="@+id/svExercises"
         tools:listitem="@layout/item_exercise_add"
         />
+
+    
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

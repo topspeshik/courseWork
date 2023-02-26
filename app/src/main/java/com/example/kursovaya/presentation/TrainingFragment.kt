@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kursovaya.R
 import com.example.kursovaya.data.network.ApiFactory
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TrainingFragment : Fragment() {
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
