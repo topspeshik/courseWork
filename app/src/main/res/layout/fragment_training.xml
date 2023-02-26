@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#05071D"
-    tools:context=".TrainingFragment">
+    tools:context=".presentation.TrainingFragment">
 
 
     <TextView
         android:id="@+id/tv_workout"
         style="@style/headerText"
-        android:paddingTop = "18dp"
+        android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/workout"
