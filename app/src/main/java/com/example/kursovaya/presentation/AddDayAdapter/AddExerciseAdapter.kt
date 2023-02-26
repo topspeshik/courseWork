@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 
 import com.example.kursovaya.data.model.Training
 import com.example.kursovaya.databinding.ItemExerciseAddBinding
+import com.squareup.picasso.Picasso
 
 class AddExerciseAdapter(
     private val context: Context
@@ -29,6 +30,7 @@ class AddExerciseAdapter(
         with(holder.binding){
             with(exercise){
                 tvName.text = name
+                Picasso.get().load(urlimg).into(ivExercise)
             }
         }
 

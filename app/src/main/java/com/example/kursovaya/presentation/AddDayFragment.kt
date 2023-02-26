@@ -35,7 +35,7 @@ class AddDayFragment : Fragment() {
         binding.rvExercisesList.adapter = adapter
         binding.svExercises.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                TODO("Not yet implemented")
+                return true
             }
             override fun onQueryTextChange(newText: String?): Boolean {
                 newText?.let {
