@@ -17,5 +17,17 @@
     <fragment
         android:id="@+id/addDayFragment"
         android:name="com.example.kursovaya.presentation.AddDayFragment"
-        android:label="AddDayFragment" />
+        android:label="AddDayFragment" >
+        <action
+            android:id="@+id/action_addDayFragment_to_addExerciseFragment"
+            app:destination="@id/addExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExerciseFragment"
+        android:name="com.example.kursovaya.presentation.AddExerciseFragment"
+        android:label="AddExerciseFragment" >
+        <argument
+            android:name="training"
+            app:argType="com.example.kursovaya.data.model.Training" />
+    </fragment>
 </navigation>

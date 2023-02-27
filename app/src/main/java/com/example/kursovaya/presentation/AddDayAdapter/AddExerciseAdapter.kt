@@ -10,11 +10,9 @@ import com.example.kursovaya.data.model.Training
 import com.example.kursovaya.databinding.ItemExerciseAddBinding
 import com.squareup.picasso.Picasso
 
-class AddExerciseAdapter(
-    private val context: Context
-) : ListAdapter<Training, AddExerciseViewHolder>(AddExerciseDiffCallback) {
+class AddExerciseAdapter : ListAdapter<Training, AddExerciseViewHolder>(AddExerciseDiffCallback) {
 
-
+    var onExerciseItemClickListener: ((Training) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddExerciseViewHolder {
         val binding = ItemExerciseAddBinding.inflate(
@@ -31,8 +29,15 @@ class AddExerciseAdapter(
             with(exercise){
                 tvName.text = name
                 Picasso.get().load(urlimg).into(ivExercise)
+
+                ivExerciseAdd.setOnClickListener{
+                    onExerciseItemClickListener?.invoke(this)
+                }
+
             }
         }
+
+
 
     }
 

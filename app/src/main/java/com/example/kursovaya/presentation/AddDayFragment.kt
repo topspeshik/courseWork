@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.kursovaya.R
 import com.example.kursovaya.databinding.FragmentAddDayBinding
 import com.example.kursovaya.presentation.AddDayAdapter.AddExerciseAdapter
 
@@ -15,7 +17,7 @@ import com.example.kursovaya.presentation.AddDayAdapter.AddExerciseAdapter
 class AddDayFragment : Fragment() {
 
     private lateinit var viewModel: AddDayViewModel
-
+    private lateinit var addExerciseAdapter: AddExerciseAdapter
 
     private var _binding: FragmentAddDayBinding? = null
     private val binding get() = _binding!!
@@ -31,8 +33,18 @@ class AddDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[AddDayViewModel::class.java]
-        val adapter = this.context?.let { AddExerciseAdapter(it) }
-        binding.rvExercisesList.adapter = adapter
+        addExerciseAdapter = AddExerciseAdapter()
+        binding.rvExercisesList.adapter = addExerciseAdapter
+
+        viewModel.trainingList.observe(viewLifecycleOwner) {
+            addExerciseAdapter.submitList(it)
+        }
+
+        setupClickListener()
+
+    }
+
+    private fun setupClickListener(){
         binding.svExercises.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -45,9 +57,11 @@ class AddDayFragment : Fragment() {
             }
         })
 
-        viewModel.trainingList.observe(viewLifecycleOwner) {
-            adapter?.submitList(it)
+
+        addExerciseAdapter.onExerciseItemClickListener = {
+            findNavController().navigate(AddDayFragmentDirections.actionAddDayFragmentToAddExerciseFragment(it))
         }
 
     }
+
 }
