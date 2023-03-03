@@ -33,13 +33,13 @@
             android:text="@string/exercises" />
 
         <TextView
+            android:id="@+id/tv_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="30"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:text="День 1"
             tools:text="День 1" />
 
 

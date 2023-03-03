@@ -35,7 +35,7 @@ class AddDayFragment : Fragment() {
         viewModel = ViewModelProvider(this)[AddDayViewModel::class.java]
         addExerciseAdapter = AddExerciseAdapter()
         binding.rvExercisesList.adapter = addExerciseAdapter
-
+        binding.tvDay.text =  "День ${TrainingFragment.DAY_ID}"
         viewModel.trainingList.observe(viewLifecycleOwner) {
             addExerciseAdapter.submitList(it)
         }

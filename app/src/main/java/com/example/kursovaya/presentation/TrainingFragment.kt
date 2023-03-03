@@ -34,8 +34,14 @@ class TrainingFragment : Fragment() {
             CoroutineScope(Dispatchers.IO).launch {
                 Log.d("checkApi", apiService.getTrainingList().toString())
             }
+            DAY_ID+=1
             findNavController().navigate(R.id.action_trainingFragment_to_addDayFragment)
         }
 
     }
+
+    companion object {
+        var DAY_ID = 0
+    }
+
 }
