@@ -22,7 +22,7 @@ class TrainingAdapter : ListAdapter<Int, TrainingViewHolder>(TrainingDiffCallbac
 
     override fun onBindViewHolder(holder: TrainingViewHolder, position: Int) {
         val day = getItem(position)
-        holder.binding.tvDay.text = day.toString()
+        holder.binding.tvDay.text = "День $day"
 
         holder.binding.cardView.setOnClickListener{
             onExerciseItemClickListener?.invoke(day)

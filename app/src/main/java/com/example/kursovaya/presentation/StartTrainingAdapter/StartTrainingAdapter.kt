@@ -5,12 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.kursovaya.data.db.ExerciseItemDbModel
 import com.example.kursovaya.databinding.ItemExerciseBinding
-import com.squareup.picasso.Picasso
+
 
 
 class StartTrainingAdapter : ListAdapter<ExerciseItemDbModel, StartTrainingViewHolder>(StartTrainingDiffCallback) {
-
-    var onExerciseItemClickListener: ((ExerciseItemDbModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartTrainingViewHolder {
         val binding = ItemExerciseBinding.inflate(
@@ -27,7 +25,7 @@ class StartTrainingAdapter : ListAdapter<ExerciseItemDbModel, StartTrainingViewH
         with(holder.binding){
             with(exercise){
                 tvName.text = exercise_name
-
+                tvDescription.text = "$sets x $reps x $kg kg".filter{ !it.isWhitespace() }
                 //Picasso.get().load(urlimg).into(ivExercise)
             }
         }

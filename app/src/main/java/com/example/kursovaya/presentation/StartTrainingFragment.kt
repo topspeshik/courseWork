@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import com.example.kursovaya.R
-import com.example.kursovaya.databinding.FragmentAddDayBinding
 import com.example.kursovaya.databinding.FragmentStartTrainingBinding
 import com.example.kursovaya.presentation.StartTrainingAdapter.StartTrainingAdapter
-import com.example.kursovaya.presentation.TrainingAdapter.TrainingAdapter
+
 
 
 class StartTrainFragment : Fragment() {
@@ -26,7 +24,7 @@ class StartTrainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentStartTrainingBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,9 +39,6 @@ class StartTrainFragment : Fragment() {
         viewModel.getExerciseList(args.day).observe(viewLifecycleOwner){
             startTrainingAdapter.submitList(it)
         }
-
-
-
 
     }
 }

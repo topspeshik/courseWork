@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kursovaya.databinding.FragmentAddExerciseBinding
-import com.squareup.picasso.Picasso
+
 
 
 class AddExerciseFragment : Fragment() {
