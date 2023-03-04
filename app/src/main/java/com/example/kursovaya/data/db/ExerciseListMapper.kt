@@ -6,7 +6,6 @@ class ExerciseListMapper {
 
     fun mapEntityToDbModel(exerciseItem: ExerciseItem) = ExerciseItemDbModel(
         day_id = exerciseItem.day_id,
-        exercise_id = exerciseItem.exercise_id,
         exercise_name = exerciseItem.exercise_name,
         sets = exerciseItem.sets,
         reps = exerciseItem.reps,

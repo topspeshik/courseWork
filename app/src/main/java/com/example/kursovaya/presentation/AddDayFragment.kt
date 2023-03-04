@@ -57,7 +57,6 @@ class AddDayFragment : Fragment() {
             }
         })
 
-
         addExerciseAdapter.onExerciseItemClickListener = {
             findNavController().navigate(AddDayFragmentDirections.actionAddDayFragmentToAddExerciseFragment(it))
         }

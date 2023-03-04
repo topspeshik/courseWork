@@ -17,7 +17,7 @@ class AddExerciseFragment : Fragment() {
     private val args by navArgs<AddExerciseFragmentArgs>()
     private lateinit var viewModel: AddExerciseViewModel
 
-    private var exercise_id = 0
+
 
     private var _binding: FragmentAddExerciseBinding? = null
     private val binding get() = _binding!!
@@ -44,14 +44,12 @@ class AddExerciseFragment : Fragment() {
 //            Picasso.get().load(args.training.urlimg).into(ivExercise)
 
             buttonAdd.setOnClickListener{
-                exercise_id+=1
                 viewModel.addExerciseItem(
                     TrainingFragment.DAY_ID,
-                    exercise_id,
-                    binding.tvExercise.toString(),
-                    binding.sets.toString(),
-                    binding.reps.toString(),
-                    binding.kg.toString()
+                    binding.tvExercise.text.toString(),
+                    binding.sets.text.toString(),
+                    binding.reps.text.toString(),
+                    binding.kg.text.toString()
 
                 )
             }
