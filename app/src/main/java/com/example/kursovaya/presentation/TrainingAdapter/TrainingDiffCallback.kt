@@ -1,7 +1,7 @@
 package com.example.kursovaya.presentation.TrainingAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.kursovaya.data.db.ExerciseItemDbModel
+
 
 
 object TrainingDiffCallback : DiffUtil.ItemCallback<Int>() {

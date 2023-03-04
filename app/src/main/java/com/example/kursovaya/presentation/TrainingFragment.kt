@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.kursovaya.R
 import com.example.kursovaya.data.network.ApiFactory
-import com.example.kursovaya.databinding.FragmentAddDayBinding
 import com.example.kursovaya.databinding.FragmentTrainingBinding
 import com.example.kursovaya.presentation.TrainingAdapter.TrainingAdapter
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +28,7 @@ class TrainingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
         return binding.root
@@ -44,6 +42,10 @@ class TrainingFragment : Fragment() {
 
         viewModel.daysList.observe(viewLifecycleOwner){
             trainingAdapter.submitList(it)
+        }
+
+        trainingAdapter.onExerciseItemClickListener = {
+            findNavController().navigate(TrainingFragmentDirections.actionTrainingFragmentToStartTrainFragment(it))
         }
 
         val btn = view.findViewById<FloatingActionButton>(R.id.buttonAddDay)
@@ -60,7 +62,6 @@ class TrainingFragment : Fragment() {
 
     companion object {
         var DAY_ID = 0
-        var EXERCISE_ID = 0
     }
 
 }

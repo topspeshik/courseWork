@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_trainingFragment_to_addDayFragment"
             app:destination="@id/addDayFragment" />
+        <action
+            android:id="@+id/action_trainingFragment_to_startTrainFragment"
+            app:destination="@id/startTrainFragment" />
     </fragment>
     <fragment
         android:id="@+id/addDayFragment"
@@ -29,5 +32,13 @@
         <argument
             android:name="training"
             app:argType="com.example.kursovaya.data.model.Training" />
+    </fragment>
+    <fragment
+        android:id="@+id/startTrainFragment"
+        android:name="com.example.kursovaya.presentation.StartTrainFragment"
+        android:label="StartTrainFragment" >
+        <argument
+            android:name="day"
+            app:argType="integer" />
     </fragment>
 </navigation>

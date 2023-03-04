@@ -13,6 +13,9 @@ interface ExerciseListDao {
     @Query("SELECT * FROM exercise_items")
     fun getExerciseList(): LiveData<List<ExerciseItemDbModel>>
 
+    @Query("SELECT * FROM exercise_items WHERE day_id = :id")
+    fun getExerciseListPerDay(id: Int): LiveData<List<ExerciseItemDbModel>>
+
     @Query("SELECT DISTINCT day_id from exercise_items")
     fun getDaysList(): LiveData<List<Int>>
 

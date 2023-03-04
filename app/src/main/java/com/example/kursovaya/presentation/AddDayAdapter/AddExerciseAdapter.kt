@@ -1,12 +1,9 @@
 package com.example.kursovaya.presentation.AddDayAdapter
 
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.bumptech.glide.Glide
-
 import com.example.kursovaya.data.model.Training
 import com.example.kursovaya.databinding.ItemExerciseAddBinding
 import com.squareup.picasso.Picasso
