@@ -21,6 +21,7 @@ class TrainingProcessFragment : Fragment() {
     private lateinit var viewModel: TrainingProcessViewModel
     private val args by navArgs<TrainingProcessFragmentArgs>()
     private var count = 0
+    private var countSets = 1
 
     private var _binding: FragmentTrainingProcessBinding? = null
     private val binding get() = _binding!!
@@ -37,7 +38,7 @@ class TrainingProcessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvReps.text = args.exercises[count].reps
         binding.tvName.text = args.exercises[count].exercise_name
-
+        binding.tvSets.text = "1/${args.exercises[count].sets}"
         Glide
             .with(binding.root.context)
             .load(args.exercises[count].urlgif)
@@ -47,13 +48,24 @@ class TrainingProcessFragment : Fragment() {
         binding.chronometer.start()
 
         setOnNextButtonListener()
+        setOnAddButtonListener()
 
 
+    }
+
+    private fun setOnAddButtonListener(){
+        binding.ivExerciseAdd.setOnClickListener{
+            countSets+=1
+            binding.tvSets.text = "$countSets/${args.exercises[count].sets}"
+            binding.progressBar.progress = ((countSets/args.exercises[count].sets.toFloat()) * 100).toInt()
+
+        }
     }
 
     private fun setOnNextButtonListener(){
         binding.btnNextExercise.setOnClickListener{
             count+=1
+            countSets=1
             if (count >= args.exercises.size) {
                 setupAlert()
             } else {
@@ -62,6 +74,8 @@ class TrainingProcessFragment : Fragment() {
                     .with(binding.root.context)
                     .load(args.exercises[count].urlgif)
                     .into(binding.ivExercise)
+                binding.tvSets.text = "1/${args.exercises[count].sets}"
+                binding.progressBar.progress = 0
             }
         }
     }

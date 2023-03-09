@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="30"
             android:gravity="center"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
 
     </LinearLayout>
@@ -82,8 +82,8 @@
         android:background="@drawable/corner_shape"
         android:columnCount="2"
         android:orientation="horizontal"
-        android:rowCount="2"
         android:padding="8dp"
+        android:rowCount="2"
         app:layout_constraintTop_toBottomOf="@id/cv_exercise">
 
         <TextView
@@ -94,21 +94,39 @@
             android:layout_gravity="center"
             android:background="@drawable/circle_red"
             android:gravity="center"
-            tools:text="12"
             android:textColor="@color/white"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            tools:text="12" />
 
-        <TextView
-            android:id="@+id/tv_sets"
+        <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:background="@drawable/circle_red"
-            android:gravity="center"
-            tools:text="1/4"
-            android:textColor="@color/white"
-            android:textSize="32sp" />
+            android:layout_columnWeight="1">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circle_red"
+                android:max="100"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                tools:progress="65" />
+
+            <TextView
+                android:id="@+id/tv_sets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                tools:text="1/4" />
+        </RelativeLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -141,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="Килограммы"
+            android:hint="@string/kg"
             android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="#D9D9D9"
@@ -167,11 +185,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:contentDescription="@string/add_new_exercise"
-            app:srcCompat="@drawable/ic_add"
-             />
-
-
-
+            app:srcCompat="@drawable/ic_add" />
 
 
     </LinearLayout>
