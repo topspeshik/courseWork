@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.TrainingProcessFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:background="@drawable/button_blank_background"
+            android:text="@string/backReady" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="40"
+            android:gravity="center"
+            tools:text="Жим лежа" />
+
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:textSize="14sp"/>
+
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_exercise"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="25dp"
+        app:cardBackgroundColor="#1E2A36"
+        app:cardCornerRadius="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="26dp"
+            app:cardCornerRadius="32dp">
+
+            <ImageView
+                android:id="@+id/iv_exercise"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/exercise_img"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/corner_shape"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="2"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_exercise">
+
+        <TextView
+            android:id="@+id/tv_reps"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_red"
+            android:gravity="center"
+            tools:text="12"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/tv_sets"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_red"
+            android:gravity="center"
+            tools:text="1/4"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:text="@string/repsNeed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:text="@string/setsNeed" />
+
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/corner_shape"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout">
+
+        <EditText
+            android:id="@+id/et_kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="Килограммы"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="#D9D9D9"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/reps"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="#D9D9D9"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_exercise_add"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/add_new_exercise"
+            app:srcCompat="@drawable/ic_add"
+             />
+
+
+
+
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_nextExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/next_exercise"
+        android:focusable="true"
+        app:backgroundTint="#CDDC39"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

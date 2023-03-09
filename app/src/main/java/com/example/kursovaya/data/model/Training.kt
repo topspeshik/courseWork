@@ -11,5 +11,7 @@ data class Training (
     @SerializedName("name")
     val name: String?,
     @SerializedName("urlimg")
-    val urlimg: String?
+    val urlimg: String?,
+    @SerializedName("urlgif")
+    val urlgif: String?
 ) : Parcelable

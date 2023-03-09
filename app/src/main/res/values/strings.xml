@@ -16,4 +16,7 @@
     <string name="kg">Килограммы</string>
     <string name="addExercise">Добавить</string>
     <string name="startTrain">Начать тренировку</string>
+    <string name="repsNeed">Повторений требуется</string>
+    <string name="setsNeed">Подходы</string>
+    <string name="next_exercise">next exercise</string>
 </resources>

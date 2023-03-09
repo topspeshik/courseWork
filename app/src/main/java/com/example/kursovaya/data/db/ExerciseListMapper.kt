@@ -9,7 +9,9 @@ class ExerciseListMapper {
         exercise_name = exerciseItem.exercise_name,
         sets = exerciseItem.sets,
         reps = exerciseItem.reps,
-        kg = exerciseItem.kg
+        kg = exerciseItem.kg,
+        urlimg = exerciseItem.urlimg,
+        urlgif = exerciseItem.urlgif
     )
 
 }

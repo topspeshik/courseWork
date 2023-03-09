@@ -6,6 +6,9 @@ data class ExerciseItem (
     val exercise_name: String,
     val sets: String,
     val reps: String,
-    val kg: String
+    val kg: String,
+    val urlimg: String,
+    val urlgif: String
+
 
 )

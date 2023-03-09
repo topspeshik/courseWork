@@ -39,7 +39,7 @@ class AddExerciseFragment : Fragment() {
             tvExercise.text = args.training.name
             Glide
                 .with(root.context)
-                .load(args.training.urlimg)
+                .load(args.training.urlgif)
                 .into(ivExercise)
 //            Picasso.get().load(args.training.urlimg).into(ivExercise)
 
@@ -49,7 +49,10 @@ class AddExerciseFragment : Fragment() {
                     binding.tvExercise.text.toString(),
                     binding.sets.text.toString(),
                     binding.reps.text.toString(),
-                    binding.kg.text.toString()
+                    binding.kg.text.toString(),
+                    args.training.urlimg.toString(),
+                    args.training.urlgif.toString()
+
 
                 )
             }

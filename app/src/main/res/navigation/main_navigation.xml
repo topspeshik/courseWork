@@ -40,5 +40,20 @@
         <argument
             android:name="day"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_startTrainFragment_to_trainingProcessFragment"
+            app:destination="@id/trainingProcessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingProcessFragment"
+        android:name="com.example.kursovaya.presentation.TrainingProcessFragment"
+        android:label="fragment_training_process"
+        tools:layout="@layout/fragment_training_process" >
+        <argument
+            android:name="exercises"
+            app:argType="com.example.kursovaya.data.db.ExerciseItemDbModel[]" />
+        <action
+            android:id="@+id/action_trainingProcessFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
     </fragment>
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#05071D"
-    tools:context=".AddDayFragment">
+    tools:context=".presentation.StartTrainingFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,13 +33,14 @@
             android:text="@string/exercises" />
 
         <TextView
+            android:id="@+id/tv_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="30"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="14sp"
-            tools:text="09:21" />
+            tools:text="День 1" />
 
 
     </LinearLayout>
@@ -71,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rvExercises">
 
         <Button
+            android:id="@+id/btn_startTraining"
             style="@style/buttonAdd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

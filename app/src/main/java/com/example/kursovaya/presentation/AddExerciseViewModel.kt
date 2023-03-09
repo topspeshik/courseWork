@@ -13,7 +13,7 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
 
     private val exerciseDatabase = ExerciseDatabase.getInstance(getApplication())
 
-    fun addExerciseItem(day_id: Int, ex_name: String, sets: String, reps: String, kg: String) {
+    fun addExerciseItem(day_id: Int, ex_name: String, sets: String, reps: String, kg: String, urlimg: String, urlgif: String) {
         viewModelScope.launch {
             exerciseDatabase.exerciseListDao().addExerciseItem(
                 ExerciseItemDbModel(
@@ -21,7 +21,9 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                     ex_name,
                     sets,
                     reps,
-                    kg
+                    kg,
+                    urlimg,
+                    urlgif
                 )
             )
         }
