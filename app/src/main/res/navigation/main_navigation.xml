@@ -12,10 +12,12 @@
         tools:layout="@layout/fragment_training" >
         <action
             android:id="@+id/action_trainingFragment_to_addDayFragment"
-            app:destination="@id/addDayFragment" />
+            app:destination="@id/addDayFragment"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_trainingFragment_to_startTrainFragment"
-            app:destination="@id/startTrainFragment" />
+            app:destination="@id/startTrainFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/addDayFragment"
@@ -23,7 +25,8 @@
         android:label="AddDayFragment" >
         <action
             android:id="@+id/action_addDayFragment_to_addExerciseFragment"
-            app:destination="@id/addExerciseFragment" />
+            app:destination="@id/addExerciseFragment"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
@@ -42,7 +45,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_startTrainFragment_to_trainingProcessFragment"
-            app:destination="@id/trainingProcessFragment" />
+            app:destination="@id/trainingProcessFragment"
+            app:enterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/trainingProcessFragment"
@@ -54,6 +58,8 @@
             app:argType="com.example.kursovaya.data.db.ExerciseItemDbModel[]" />
         <action
             android:id="@+id/action_trainingProcessFragment_to_trainingFragment"
-            app:destination="@id/trainingFragment" />
+            app:destination="@id/trainingFragment"
+            app:exitAnim="@android:anim/fade_out"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 </navigation>

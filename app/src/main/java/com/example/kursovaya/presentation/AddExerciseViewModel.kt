@@ -18,6 +18,10 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
     val errorInputCount: LiveData<Boolean>
         get() = _errorInputCount
 
+    private val _shouldCloseScreen = MutableLiveData<Boolean>()
+    val shouldCloseScreen: LiveData<Boolean>
+        get() = _shouldCloseScreen
+
     fun addExerciseItem(day_id: Int, ex_name: String, inputSets: String, inputReps: String, inputKg: String, urlimg: String, urlgif: String) {
         val sets = parseCount(inputSets)
         val reps = parseCount(inputReps)
@@ -36,6 +40,7 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                     )
                 )
             }
+            _shouldCloseScreen.value = true
         }
     }
 

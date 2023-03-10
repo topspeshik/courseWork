@@ -54,7 +54,6 @@ class TrainingProcessViewModel(
     }
 
     fun newPage(){
-
         count+=1
         countSets = 1
         if (count >= exercisesArgs.size)

@@ -1,12 +1,15 @@
 package com.example.kursovaya.presentation
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kursovaya.databinding.FragmentAddExerciseBinding
@@ -42,7 +45,6 @@ class AddExerciseFragment : Fragment() {
                 .with(root.context)
                 .load(args.training.urlgif)
                 .into(ivExercise)
-//            Picasso.get().load(args.training.urlimg).into(ivExercise)
 
             buttonAdd.setOnClickListener{
                 viewModel.addExerciseItem(
@@ -53,9 +55,8 @@ class AddExerciseFragment : Fragment() {
                     binding.kg.text.toString(),
                     args.training.urlimg.toString(),
                     args.training.urlgif.toString()
-
-
                 )
+                view.hideKeyboard()
             }
         }
 
@@ -65,5 +66,15 @@ class AddExerciseFragment : Fragment() {
             }
         }
 
+        viewModel.shouldCloseScreen.observe(viewLifecycleOwner){
+            if (it)
+                findNavController().popBackStack()
+        }
+
+    }
+
+    fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }

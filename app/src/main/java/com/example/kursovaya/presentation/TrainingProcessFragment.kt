@@ -1,6 +1,7 @@
 package com.example.kursovaya.presentation
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.os.SystemClock
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -28,9 +30,6 @@ class TrainingProcessFragment : Fragment() {
         ViewModelProvider(this, viewModelFactory)[TrainingProcessViewModel::class.java]
     }
 
-    private var count = 0
-    private var countSets = 1
-
     private var _binding: FragmentTrainingProcessBinding? = null
     private val binding get() = _binding!!
 
@@ -46,20 +45,12 @@ class TrainingProcessFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observeViewModel()
-//        binding.tvReps.text = args.exercises[count].reps.toString()
-//        binding.tvName.text = args.exercises[count].exercise_name
-//        binding.tvSets.text = "1/${args.exercises[count].sets}"
-//        Glide
-//            .with(binding.root.context)
-//            .load(args.exercises[count].urlgif)
-//            .into(binding.ivExercise)
 
         binding.chronometer.base = SystemClock.elapsedRealtime()
         binding.chronometer.start()
 
         setOnNextButtonListener()
         setOnAddButtonListener()
-
 
     }
 
@@ -68,13 +59,17 @@ class TrainingProcessFragment : Fragment() {
             viewModel.addItem(
                 binding.etKg.text.toString(),
                 binding.etReps.text.toString()
-
             )
-//            countSets+=1
-//            binding.tvSets.text = "$countSets/${args.exercises[count].sets}"
-//            binding.progressBar.progress = ((countSets/args.exercises[count].sets.toFloat()) * 100).toInt()
+            it.hideKeyboard()
+            binding.etKg.text.clear()
+            binding.etReps.text.clear()
 
         }
+    }
+
+    fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 
     private fun setOnNextButtonListener(){

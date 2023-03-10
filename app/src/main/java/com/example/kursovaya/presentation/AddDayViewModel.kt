@@ -1,6 +1,7 @@
 package com.example.kursovaya.presentation
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.kursovaya.data.model.Training
 import com.example.kursovaya.data.network.ApiFactory.apiService
@@ -13,9 +14,14 @@ class AddDayViewModel(application: Application)  : AndroidViewModel(application)
         get() = _trainingList
 
     fun searchViewFind(sym: String) {
-        viewModelScope.launch {
-            _trainingList.value = apiService.getTrainingList()
-                .filter { training -> training.name!!.startsWith(sym) }
+        Log.d("checkshit",sym.isNotBlank().toString())
+        if (sym.isNotBlank()) {
+            viewModelScope.launch {
+                _trainingList.value = apiService.getTrainingList()
+                    .filter { training -> training.name!!
+                        .lowercase()
+                        .startsWith(sym.lowercase()) }
+            }
         }
     }
 
