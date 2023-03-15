@@ -21,8 +21,6 @@ class AddExerciseFragment : Fragment() {
     private val args by navArgs<AddExerciseFragmentArgs>()
     private lateinit var viewModel: AddExerciseViewModel
 
-
-
     private var _binding: FragmentAddExerciseBinding? = null
     private val binding get() = _binding!!
 
@@ -30,7 +28,6 @@ class AddExerciseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentAddExerciseBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -59,7 +56,11 @@ class AddExerciseFragment : Fragment() {
                 view.hideKeyboard()
             }
         }
+        observeViewModel()
 
+    }
+
+    private fun observeViewModel(){
         viewModel.errorInputCount.observe(viewLifecycleOwner){
             if(it){
                 Toast.makeText(context,"Введите значения!", Toast.LENGTH_SHORT).show()
