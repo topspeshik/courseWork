@@ -2,6 +2,7 @@ package com.example.kursovaya.presentation
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,6 +54,9 @@ class AddExerciseFragment : Fragment() {
                     args.training.urlimg.toString(),
                     args.training.urlgif.toString()
                 )
+//                viewModel.exerciseDatabase.exerciseListDao().getExerciseListTest().observe(viewLifecycleOwner){
+//                    Log.d("checkshit2", it.toString())
+//                }
                 view.hideKeyboard()
             }
         }

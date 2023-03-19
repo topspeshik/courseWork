@@ -1,12 +1,14 @@
 package com.example.kursovaya.presentation
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kursovaya.data.db.ExerciseDatabase
 import com.example.kursovaya.data.db.ExerciseItemDbModel
+import com.example.kursovaya.data.db.NetworkItemDbModel
 import kotlinx.coroutines.launch
 
 
@@ -28,18 +30,24 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
         val kg = parseCount(inputKg)
         if (validateInput(sets,reps,kg)) {
             viewModelScope.launch {
-                exerciseDatabase.exerciseListDao().addExerciseItem(
-                    ExerciseItemDbModel(
-                        day_id,
+                exerciseDatabase.networkListDao().addNetworkItem(
+                    NetworkItemDbModel(
                         ex_name,
-                        sets,
-                        reps,
-                        kg,
                         urlimg,
                         urlgif
                     )
                 )
+                exerciseDatabase.exerciseListDao().addExerciseItem(
+                    ExerciseItemDbModel(
+                        ex_name,
+                        sets,
+                        reps,
+                        kg
+                    )
+                )
+
             }
+
             _shouldCloseScreen.value = true
         }
     }

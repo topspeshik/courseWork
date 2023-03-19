@@ -96,10 +96,10 @@ class TrainingProcessFragment : Fragment() {
 
         viewModel.exercise.observe(viewLifecycleOwner){
                 binding.tvReps.text = it.reps.toString()
-                Glide
-                    .with(binding.root.context)
-                    .load(it.urlgif)
-                    .into(binding.ivExercise)
+//                Glide
+//                    .with(binding.root.context)
+//                    .load(it.urlgif)
+//                    .into(binding.ivExercise)
                 binding.tvSets.text = "1/${it.sets}"
                 binding.progressBar.progress = 0
         }

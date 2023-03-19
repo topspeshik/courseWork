@@ -22,16 +22,16 @@ class StartTrainingAdapter : ListAdapter<ExerciseItemDbModel, StartTrainingViewH
     override fun onBindViewHolder(holder: StartTrainingViewHolder, position: Int) {
         val exercise = getItem(position)
 
-        with(holder.binding){
-            with(exercise){
-                tvName.text = exercise_name
-                tvDescription.text = "$sets x $reps x $kg kg".filter{ !it.isWhitespace() }
-                Glide
-                    .with(root.context)
-                    .load(urlimg)
-                    .into(ivExercise)
-            }
-        }
+//        with(holder.binding){
+//            with(exercise){
+//                tvName.text = exercise_name
+//                tvDescription.text = "$sets x $reps x $kg kg".filter{ !it.isWhitespace() }
+//                Glide
+//                    .with(root.context)
+//                    .load(urlimg)
+//                    .into(ivExercise)
+//            }
+//        }
 
     }
 
