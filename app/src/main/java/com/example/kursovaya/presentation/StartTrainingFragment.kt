@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.kursovaya.data.db.ExerciseItemDbModel
 import com.example.kursovaya.databinding.FragmentStartTrainingBinding
 import com.example.kursovaya.presentation.StartTrainingAdapter.StartTrainingAdapter
 
@@ -37,7 +36,6 @@ class StartTrainFragment : Fragment() {
         startTrainingAdapter = StartTrainingAdapter()
         binding.rvExercises.adapter = startTrainingAdapter
 
-
         viewModel.getExerciseList(args.day).observe(viewLifecycleOwner){
             startTrainingAdapter.submitList(it)
             binding.btnStartTraining.setOnClickListener{ view->
@@ -46,8 +44,6 @@ class StartTrainFragment : Fragment() {
                 ))
             }
         }
-
-
 
     }
 }

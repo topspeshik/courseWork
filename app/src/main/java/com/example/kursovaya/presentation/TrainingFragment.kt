@@ -21,6 +21,7 @@ class TrainingFragment : Fragment() {
 
     private lateinit var viewModel: TrainingViewModel
     private lateinit var trainingAdapter: TrainingAdapter
+    private var currentDay: Int = 0
 
     private var _binding: FragmentTrainingBinding? = null
     private val binding get() = _binding!!
@@ -48,13 +49,17 @@ class TrainingFragment : Fragment() {
             findNavController().navigate(TrainingFragmentDirections.actionTrainingFragmentToStartTrainFragment(it))
         }
 
+        viewModel.getCurrentDay.observe(viewLifecycleOwner){
+            currentDay = it ?: 0
+        }
+
         val btn = view.findViewById<FloatingActionButton>(R.id.buttonAddDay)
         val apiService = ApiFactory.apiService
         btn.setOnClickListener{
             CoroutineScope(Dispatchers.IO).launch {
                 Log.d("checkApi", apiService.getTrainingList().toString())
             }
-            DAY_ID+=1
+            DAY_ID=currentDay+1
             findNavController().navigate(R.id.action_trainingFragment_to_addDayFragment)
         }
 

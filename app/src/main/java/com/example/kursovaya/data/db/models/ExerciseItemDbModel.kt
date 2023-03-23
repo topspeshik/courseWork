@@ -1,11 +1,10 @@
-package com.example.kursovaya.data.db
+package com.example.kursovaya.data.db.models
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
 
 
 @kotlinx.parcelize.Parcelize
@@ -15,9 +14,7 @@ import kotlinx.android.parcel.Parcelize
         ForeignKey(
             entity = NetworkItemDbModel::class,
             parentColumns = ["exercise_name"],
-            childColumns = ["name"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
+            childColumns = ["name"]
         )]
 )
 

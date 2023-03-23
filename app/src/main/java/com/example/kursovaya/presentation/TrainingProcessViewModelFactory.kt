@@ -3,11 +3,11 @@ package com.example.kursovaya.presentation
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.kursovaya.data.db.ExerciseItemDbModel
+import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
 
 class TrainingProcessViewModelFactory(
     private val application: Application,
-    private val exercises: Array<ExerciseItemDbModel>
+    private val exercises: Array<ExerciseWithNetworkTuple>
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TrainingProcessViewModel::class.java))

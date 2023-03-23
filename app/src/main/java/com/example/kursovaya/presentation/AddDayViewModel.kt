@@ -3,7 +3,7 @@ package com.example.kursovaya.presentation
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.kursovaya.data.model.Training
+import com.example.kursovaya.data.network.model.Training
 import com.example.kursovaya.data.network.ApiFactory.apiService
 import kotlinx.coroutines.launch
 

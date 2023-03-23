@@ -1,21 +1,23 @@
 package com.example.kursovaya.presentation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.kursovaya.data.db.ExerciseDatabase
-import com.example.kursovaya.data.db.ExerciseItemDbModel
-import com.example.kursovaya.data.db.NetworkItemDbModel
+import com.example.kursovaya.data.db.AppDatabase
+import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
+import com.example.kursovaya.data.db.models.ExerciseItemDbModel
+import com.example.kursovaya.data.db.models.NetworkItemDbModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class AddExerciseViewModel(application: Application) : AndroidViewModel(application) {
 
 
-    private val exerciseDatabase = ExerciseDatabase.getInstance(getApplication())
+    private val appDatabase = AppDatabase.getInstance(getApplication())
     private val _errorInputCount = MutableLiveData<Boolean>()
     val errorInputCount: LiveData<Boolean>
         get() = _errorInputCount
@@ -30,14 +32,18 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
         val kg = parseCount(inputKg)
         if (validateInput(sets,reps,kg)) {
             viewModelScope.launch {
-                exerciseDatabase.networkListDao().addNetworkItem(
+
+
+
+
+                appDatabase.networkListDao().addNetworkItem(
                     NetworkItemDbModel(
                         ex_name,
                         urlimg,
                         urlgif
                     )
                 )
-                exerciseDatabase.exerciseListDao().addExerciseItem(
+                appDatabase.exerciseListDao().addExerciseItem(
                     ExerciseItemDbModel(
                         ex_name,
                         sets,
@@ -45,6 +51,18 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                         kg
                     )
                 )
+                withContext(Dispatchers.IO){
+
+                    var exercise_id = appDatabase.exerciseListDao().getCurrentId()
+                    appDatabase.dayExerciseSettingsDao().addDayExerciseItem(
+                        DayExerciseSettingsDbModel(
+                            day_id,
+                            exercise_id ,
+                            1
+                        )
+                    )
+                }
+
 
             }
 

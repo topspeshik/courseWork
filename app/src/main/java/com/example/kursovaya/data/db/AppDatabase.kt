@@ -4,6 +4,9 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
+import com.example.kursovaya.data.db.models.ExerciseItemDbModel
+import com.example.kursovaya.data.db.models.NetworkItemDbModel
 
 @Database(
     entities = [
@@ -13,18 +16,19 @@ import androidx.room.RoomDatabase
     version = 1,
     exportSchema = false
 )
-abstract class ExerciseDatabase: RoomDatabase() {
+abstract class AppDatabase: RoomDatabase() {
 
     abstract fun exerciseListDao(): ExerciseListDao
     abstract fun networkListDao(): NetworkListDao
+    abstract fun dayExerciseSettingsDao(): DayExerciseSettingsDao
 
     companion object {
 
-        private var INSTANCE: ExerciseDatabase? = null
+        private var INSTANCE: AppDatabase? = null
         private val LOCK = Any()
         private const val DB_NAME = "exercise_item.db"
 
-        fun getInstance(application: Application): ExerciseDatabase {
+        fun getInstance(application: Application): AppDatabase {
             INSTANCE?.let {
                 return it
             }
@@ -34,7 +38,7 @@ abstract class ExerciseDatabase: RoomDatabase() {
                 }
                 val db = Room.databaseBuilder(
                     application,
-                    ExerciseDatabase::class.java,
+                    AppDatabase::class.java,
                     DB_NAME
                 ).build()
                 INSTANCE = db

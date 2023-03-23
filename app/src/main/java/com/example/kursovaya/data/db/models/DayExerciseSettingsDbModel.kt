@@ -1,4 +1,4 @@
-package com.example.kursovaya.data.db
+package com.example.kursovaya.data.db.models
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -21,11 +21,12 @@ import androidx.room.PrimaryKey
 )
 
 data class DayExerciseSettingsDbModel (
+    val day_id: Int,
     val exercise_id: Int,
     val active: Int
 
 ): Parcelable
 {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="day_id") var day_id: Int = 0
+    @ColumnInfo(name="dayExercise_id") var dayExercise_id: Int = 0
 }

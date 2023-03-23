@@ -1,6 +1,6 @@
 package com.example.kursovaya.data.network
 
-import com.example.kursovaya.data.model.Training
+import com.example.kursovaya.data.network.model.Training
 import retrofit2.http.GET
 
 interface ApiService {

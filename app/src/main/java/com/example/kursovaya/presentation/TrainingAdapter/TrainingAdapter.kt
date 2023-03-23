@@ -3,7 +3,7 @@ package com.example.kursovaya.presentation.TrainingAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.kursovaya.data.model.Training
+import com.example.kursovaya.data.network.model.Training
 import com.example.kursovaya.databinding.ItemDayEnabledBinding
 
 

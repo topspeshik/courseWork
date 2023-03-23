@@ -2,13 +2,13 @@ package com.example.kursovaya.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.kursovaya.data.db.ExerciseDatabase
+import com.example.kursovaya.data.db.AppDatabase
 
 class StartTrainingViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val exerciseDatabase = ExerciseDatabase.getInstance(getApplication())
+    private val appDatabase = AppDatabase.getInstance(getApplication())
 
-    fun getExerciseList(day_id: Int) = exerciseDatabase.exerciseListDao().getExerciseListPerDay(day_id)
+    fun getExerciseList(day_id: Int) = appDatabase.dayExerciseSettingsDao().getExerciseListPerDay(day_id)
 
 
 }

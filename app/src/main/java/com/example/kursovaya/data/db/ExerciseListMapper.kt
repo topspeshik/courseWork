@@ -2,8 +2,8 @@ package com.example.kursovaya.data.db
 
 import com.example.kursovaya.domain.ExerciseItem
 
-//class ExerciseListMapper {
-//
+class ExerciseListMapper {
+
 //    fun mapEntityToDbModel(exerciseItem: ExerciseItem) = ExerciseItemDbModel(
 //        day_id = exerciseItem.day_id,
 //        exercise_name = exerciseItem.exercise_name,
@@ -13,5 +13,7 @@ import com.example.kursovaya.domain.ExerciseItem
 //        urlimg = exerciseItem.urlimg,
 //        urlgif = exerciseItem.urlgif
 //    )
-//
-//}
+
+
+
+}

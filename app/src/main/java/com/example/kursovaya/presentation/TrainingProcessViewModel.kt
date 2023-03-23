@@ -1,17 +1,15 @@
 package com.example.kursovaya.presentation
 
 import android.app.Application
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-import com.example.kursovaya.data.db.ExerciseItemDbModel
+import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
 
 class TrainingProcessViewModel(
     application: Application,
-    private val exercisesArgs: Array<ExerciseItemDbModel>
+    private val exercisesArgs: Array<ExerciseWithNetworkTuple>
 ) : ViewModel(){
 
     private var count = 0
@@ -25,8 +23,8 @@ class TrainingProcessViewModel(
     val progressText: LiveData<String>
         get() = _progressText
 
-    private val _exercise = MutableLiveData<ExerciseItemDbModel>()
-    val exercise: LiveData<ExerciseItemDbModel>
+    private val _exercise = MutableLiveData<ExerciseWithNetworkTuple>()
+    val exercise: LiveData<ExerciseWithNetworkTuple>
         get() = _exercise
 
     private val _errorInputCount = MutableLiveData<Boolean>()
@@ -48,8 +46,8 @@ class TrainingProcessViewModel(
         val kg = parseCount(inputKg)
         if (validateInput(reps,kg)){
             countSets+=1
-            _progress.value = ((countSets/exercisesArgs[count].sets.toFloat()) * 100).toInt()
-            _progressText.value = "$countSets/${exercisesArgs[count].sets}"
+            _progress.value = ((countSets/exercisesArgs[count].exercise.sets.toFloat()) * 100).toInt()
+            _progressText.value = "$countSets/${exercisesArgs[count].exercise.sets}"
         }
     }
 

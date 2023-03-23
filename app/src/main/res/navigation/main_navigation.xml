@@ -34,7 +34,7 @@
         android:label="AddExerciseFragment" >
         <argument
             android:name="training"
-            app:argType="com.example.kursovaya.data.model.Training" />
+            app:argType="com.example.kursovaya.data.network.model.Training" />
     </fragment>
     <fragment
         android:id="@+id/startTrainFragment"
@@ -55,7 +55,7 @@
         tools:layout="@layout/fragment_training_process" >
         <argument
             android:name="exercises"
-            app:argType="com.example.kursovaya.data.db.ExerciseItemDbModel[]" />
+            app:argType="com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple[]" />
         <action
             android:id="@+id/action_trainingProcessFragment_to_trainingFragment"
             app:destination="@id/trainingFragment"
