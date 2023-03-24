@@ -2,13 +2,11 @@ package com.example.kursovaya.presentation.TrainingAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.ListAdapter
 import com.example.kursovaya.R
 import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
-import com.example.kursovaya.data.network.model.Training
 import com.example.kursovaya.databinding.ItemDayDisabledBinding
 import com.example.kursovaya.databinding.ItemDayEnabledBinding
 

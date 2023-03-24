@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Training (
+data class TrainingDto (
     @SerializedName("id")
     val id: String?,
     @SerializedName("name")

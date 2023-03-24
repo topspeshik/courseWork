@@ -1,7 +1,5 @@
 package com.example.kursovaya.data.db
 
-import com.example.kursovaya.domain.ExerciseItem
-
 class ExerciseListMapper {
 
 //    fun mapEntityToDbModel(exerciseItem: ExerciseItem) = ExerciseItemDbModel(

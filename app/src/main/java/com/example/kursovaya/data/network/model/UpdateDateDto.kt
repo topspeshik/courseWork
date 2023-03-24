@@ -2,7 +2,7 @@ package com.example.kursovaya.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UpdateDate (
+data class UpdateDateDto (
     @SerializedName("date")
-    val date: String?,
+    val date: String?
 )
