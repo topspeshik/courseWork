@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kursovaya.data.db.AppDatabase
+import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import kotlinx.coroutines.launch
 
 
@@ -23,6 +24,12 @@ class TrainingViewModel(application: Application) : AndroidViewModel(application
     fun updateInactiveToActive(day_id: Int){
         viewModelScope.launch {
             appDatabase.dayExerciseSettingsDao().updateInactiveToActive(day_id)
+        }
+    }
+
+    fun deleteDayItem(dayExerciseSettingsDbModel: DayExerciseSettingsDbModel){
+        viewModelScope.launch {
+            appDatabase.dayExerciseSettingsDao().deleteDayItem(dayExerciseSettingsDbModel.day_id)
         }
     }
 

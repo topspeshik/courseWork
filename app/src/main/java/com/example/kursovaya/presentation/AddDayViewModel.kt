@@ -1,28 +1,41 @@
 package com.example.kursovaya.presentation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.kursovaya.data.network.model.Training
+import com.example.kursovaya.data.db.AppDatabase
+import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.data.network.ApiFactory.apiService
 import kotlinx.coroutines.launch
 
 class AddDayViewModel(application: Application)  : AndroidViewModel(application) {
 
-    private val _trainingList =  MutableLiveData<List<Training>>()
-    val trainingList: LiveData<List<Training>>
-        get() = _trainingList
+    private val appDatabase = AppDatabase.getInstance(application)
+    private var lastUpdate: String = ""
 
-    fun searchViewFind(sym: String) {
-        Log.d("checkshit",sym.isNotBlank().toString())
-        if (sym.isNotBlank()) {
-            viewModelScope.launch {
-                _trainingList.value = apiService.getTrainingList()
-                    .filter { training -> training.name!!
-                        .lowercase()
-                        .startsWith(sym.lowercase()) }
+    fun getTrainingList(sym: String): LiveData<List<NetworkItemDbModel>> {
+        loadData()
+        return appDatabase.networkListDao().searchName("%$sym%")
+
+    }
+
+    private fun loadData(){
+        viewModelScope.launch {
+            val update = apiService.getUpdateInfo()
+            if (update.date.toString() != lastUpdate){
+                val tList = apiService.getTrainingList()
+                for (training in tList){
+                    appDatabase.networkListDao().addNetworkItem(
+                        NetworkItemDbModel(
+                            training.name!!,
+                            training.urlimg!!,
+                            training.urlgif!!
+                        )
+                    )
+                }
             }
+            lastUpdate = update.date.toString()
         }
+
     }
 
 

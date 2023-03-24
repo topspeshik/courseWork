@@ -38,9 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="30"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="#05071D"
             android:textSize="14sp"
-            tools:text="День 1" />
+            android:text="День 1" />
 
 
     </LinearLayout>

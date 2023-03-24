@@ -2,7 +2,6 @@ package com.example.kursovaya.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +37,7 @@ class AddExerciseFragment : Fragment() {
         viewModel = ViewModelProvider(this)[AddExerciseViewModel::class.java]
 
         with(binding){
-            tvExercise.text = args.training.name
+            tvExercise.text = args.training.exercise_name
             Glide
                 .with(root.context)
                 .load(args.training.urlgif)
@@ -50,13 +49,8 @@ class AddExerciseFragment : Fragment() {
                     binding.tvExercise.text.toString(),
                     binding.sets.text.toString(),
                     binding.reps.text.toString(),
-                    binding.kg.text.toString(),
-                    args.training.urlimg.toString(),
-                    args.training.urlgif.toString()
+                    binding.kg.text.toString()
                 )
-//                viewModel.exerciseDatabase.exerciseListDao().getExerciseListTest().observe(viewLifecycleOwner){
-//                    Log.d("checkshit2", it.toString())
-//                }
                 view.hideKeyboard()
             }
         }
@@ -78,7 +72,7 @@ class AddExerciseFragment : Fragment() {
 
     }
 
-    fun View.hideKeyboard() {
+    private fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(windowToken, 0)
     }

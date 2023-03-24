@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.kursovaya.data.db.AppDatabase
 import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.data.db.models.ExerciseItemDbModel
-import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -26,23 +25,12 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
     val shouldCloseScreen: LiveData<Boolean>
         get() = _shouldCloseScreen
 
-    fun addExerciseItem(day_id: Int, ex_name: String, inputSets: String, inputReps: String, inputKg: String, urlimg: String, urlgif: String) {
+    fun addExerciseItem(day_id: Int, ex_name: String, inputSets: String, inputReps: String, inputKg: String) {
         val sets = parseCount(inputSets)
         val reps = parseCount(inputReps)
         val kg = parseCount(inputKg)
         if (validateInput(sets,reps,kg)) {
             viewModelScope.launch {
-
-
-
-
-                appDatabase.networkListDao().addNetworkItem(
-                    NetworkItemDbModel(
-                        ex_name,
-                        urlimg,
-                        urlgif
-                    )
-                )
                 appDatabase.exerciseListDao().addExerciseItem(
                     ExerciseItemDbModel(
                         ex_name,
@@ -52,8 +40,7 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                     )
                 )
                 withContext(Dispatchers.IO){
-
-                    var exercise_id = appDatabase.exerciseListDao().getCurrentId()
+                    val exercise_id = appDatabase.exerciseListDao().getCurrentId()
                     appDatabase.dayExerciseSettingsDao().addDayExerciseItem(
                         DayExerciseSettingsDbModel(
                             day_id,
@@ -63,9 +50,7 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                     )
                 }
 
-
             }
-
             _shouldCloseScreen.value = true
         }
     }

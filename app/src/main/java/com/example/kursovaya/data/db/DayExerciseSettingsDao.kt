@@ -32,4 +32,9 @@ interface DayExerciseSettingsDao {
 
     @Query("UPDATE day_exercise_settings_items SET active=1 WHERE day_id =:day_id")
     suspend fun updateInactiveToActive(day_id: Int)
+
+    @Query("DELETE FROM day_exercise_settings_items WHERE day_id=:day_id")
+    suspend fun deleteDayItem(day_id: Int)
+
+
 }

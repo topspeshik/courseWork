@@ -8,14 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kursovaya.R
-import com.example.kursovaya.data.network.ApiFactory
 import com.example.kursovaya.databinding.FragmentTrainingBinding
 import com.example.kursovaya.presentation.TrainingAdapter.TrainingAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class TrainingFragment : Fragment() {
 
@@ -42,14 +39,27 @@ class TrainingFragment : Fragment() {
         binding.rvDaysList.adapter = trainingAdapter
 
         viewModel.daysList.observe(viewLifecycleOwner){
-            Log.d("checkshit", it.toString())
             trainingAdapter.submitList(it)
         }
 
+        setupOnExerciseItemClickListener()
+        setupCheckBoxListener()
+        setupButtonDayClickListener()
+        setupSwipeListener(binding.rvDaysList)
+
+        viewModel.getCurrentDay.observe(viewLifecycleOwner){
+            currentDay = it ?: 0
+        }
+
+    }
+
+    private fun setupOnExerciseItemClickListener(){
         trainingAdapter.onExerciseItemClickListener = {
             findNavController().navigate(TrainingFragmentDirections.actionTrainingFragmentToStartTrainFragment(it))
         }
+    }
 
+    private fun setupCheckBoxListener(){
         trainingAdapter.onActiveCheckBoxClickListener = {
             viewModel.updateActiveToInactive(it)
         }
@@ -57,22 +67,39 @@ class TrainingFragment : Fragment() {
         trainingAdapter.onInactiveCheckBoxClickListener = {
             viewModel.updateInactiveToActive(it)
         }
+    }
 
-        viewModel.getCurrentDay.observe(viewLifecycleOwner){
-            currentDay = it ?: 0
-        }
-
-        val btn = view.findViewById<FloatingActionButton>(R.id.buttonAddDay)
-        val apiService = ApiFactory.apiService
-        btn.setOnClickListener{
-            CoroutineScope(Dispatchers.IO).launch {
-                Log.d("checkApi", apiService.getTrainingList().toString())
-            }
+    private fun setupButtonDayClickListener(){
+        binding.buttonAddDay.setOnClickListener{
             DAY_ID=currentDay+1
             findNavController().navigate(R.id.action_trainingFragment_to_addDayFragment)
         }
-
     }
+
+    private fun setupSwipeListener(rvDaysList: RecyclerView) {
+        val callback = object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val item = trainingAdapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteDayItem(item)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(rvDaysList)
+    }
+
+
 
     companion object {
         var DAY_ID = 0

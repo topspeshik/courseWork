@@ -40,8 +40,6 @@ class TrainingAdapter : ListAdapter<DayExerciseSettingsDbModel, TrainingViewHold
         val day = getItem(position)
         val binding = holder.binding
 
-
-
         when (binding){
             is ItemDayEnabledBinding -> {
                 binding.tvDay.text = "День ${day.day_id}"

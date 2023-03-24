@@ -34,9 +34,6 @@ class AddDayFragment : Fragment() {
         addExerciseAdapter = AddExerciseAdapter()
         binding.rvExercisesList.adapter = addExerciseAdapter
         binding.tvDay.text =  "День ${TrainingFragment.DAY_ID}"
-        viewModel.trainingList.observe(viewLifecycleOwner) {
-            addExerciseAdapter.submitList(it)
-        }
 
         setupClickListener()
 
@@ -48,9 +45,14 @@ class AddDayFragment : Fragment() {
                 return true
             }
             override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let {
-                    viewModel.searchViewFind(it)
+                newText?.let { it ->
+                    if (newText.isNotBlank()) {
+                        viewModel.getTrainingList(it).observe(viewLifecycleOwner) {
+                            addExerciseAdapter.submitList(it)
+                        }
+                    }
                 }
+
                 return true
             }
         })
