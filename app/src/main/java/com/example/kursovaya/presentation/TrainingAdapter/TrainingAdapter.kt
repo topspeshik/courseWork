@@ -2,35 +2,84 @@ package com.example.kursovaya.presentation.TrainingAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.ListAdapter
+import com.example.kursovaya.R
+import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.data.network.model.Training
+import com.example.kursovaya.databinding.ItemDayDisabledBinding
 import com.example.kursovaya.databinding.ItemDayEnabledBinding
 
 
-class TrainingAdapter : ListAdapter<Int, TrainingViewHolder>(TrainingDiffCallback) {
+class TrainingAdapter : ListAdapter<DayExerciseSettingsDbModel, TrainingViewHolder>(TrainingDiffCallback()) {
 
     var onExerciseItemClickListener: ((Int) -> Unit)? = null
+    var onActiveCheckBoxClickListener: ((Int) -> Unit)? = null
+    var onInactiveCheckBoxClickListener: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingViewHolder {
-        val binding = ItemDayEnabledBinding.inflate(
+
+        val layout = when (viewType) {
+            VIEW_TYPE_DISABLED -> R.layout.item_day_disabled
+            VIEW_TYPE_ENABLED -> R.layout.item_day_enabled
+            else -> throw RuntimeException("Unknown view type: $viewType")
+        }
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context),
+            layout,
             parent,
             false
         )
+
         return TrainingViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TrainingViewHolder, position: Int) {
         val day = getItem(position)
-        holder.binding.tvDay.text = "День $day"
+        val binding = holder.binding
 
-        holder.binding.cardView.setOnClickListener{
-            onExerciseItemClickListener?.invoke(day)
+
+
+        when (binding){
+            is ItemDayEnabledBinding -> {
+                binding.tvDay.text = "День ${day.day_id}"
+                binding.progressBar.text = "0%"
+                binding.root.setOnClickListener{
+                    onExerciseItemClickListener?.invoke(day.day_id)
+                }
+                binding.ivCheckbox.setOnClickListener{
+                    onActiveCheckBoxClickListener?.invoke(day.day_id)
+                }
+            }
+            is ItemDayDisabledBinding -> {
+                binding.tvDay.text = "День ${day.day_id}"
+                binding.progressBar.text = "100%"
+                binding.ivCheckbox.setOnClickListener{
+                    onInactiveCheckBoxClickListener?.invoke(day.day_id)
+                }
+            }
         }
 
     }
 
+    override fun getItemViewType(position: Int): Int {
+        val item = getItem(position)
+        return if (item.active==1) {
+            VIEW_TYPE_ENABLED
+        } else {
+            VIEW_TYPE_DISABLED
+        }
 
+    }
+
+    companion object {
+
+        const val VIEW_TYPE_ENABLED = 1
+        const val VIEW_TYPE_DISABLED = 0
+
+    }
 
 }
 

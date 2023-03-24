@@ -24,7 +24,7 @@ class TrainingProcessFragment : Fragment() {
 
     private val args by navArgs<TrainingProcessFragmentArgs>()
     private val viewModelFactory by lazy {
-        TrainingProcessViewModelFactory(requireActivity().application, args.exercises)
+        TrainingProcessViewModelFactory(requireActivity().application, args.exercises, args.dayId)
     }
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[TrainingProcessViewModel::class.java]

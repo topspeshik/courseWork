@@ -40,7 +40,8 @@ class StartTrainFragment : Fragment() {
             startTrainingAdapter.submitList(it)
             binding.btnStartTraining.setOnClickListener{ view->
                 findNavController().navigate(StartTrainFragmentDirections.actionStartTrainFragmentToTrainingProcessFragment(
-                    it.toTypedArray()
+                    it.toTypedArray(),
+                    args.day
                 ))
             }
         }

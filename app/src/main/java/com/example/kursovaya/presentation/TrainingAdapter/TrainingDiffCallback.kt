@@ -1,16 +1,16 @@
 package com.example.kursovaya.presentation.TrainingAdapter
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 
 
+class TrainingDiffCallback : DiffUtil.ItemCallback<DayExerciseSettingsDbModel>() {
 
-object TrainingDiffCallback : DiffUtil.ItemCallback<Int>() {
-
-    override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean {
-        return oldItem == newItem
+    override fun areItemsTheSame(oldItem: DayExerciseSettingsDbModel, newItem: DayExerciseSettingsDbModel): Boolean {
+        return oldItem.day_id == newItem.day_id
     }
 
-    override fun areContentsTheSame(oldItem: Int, newItem: Int): Boolean {
+    override fun areContentsTheSame(oldItem: DayExerciseSettingsDbModel, newItem: DayExerciseSettingsDbModel): Boolean {
         return oldItem == newItem
     }
 }

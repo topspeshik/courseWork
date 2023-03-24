@@ -42,11 +42,20 @@ class TrainingFragment : Fragment() {
         binding.rvDaysList.adapter = trainingAdapter
 
         viewModel.daysList.observe(viewLifecycleOwner){
+            Log.d("checkshit", it.toString())
             trainingAdapter.submitList(it)
         }
 
         trainingAdapter.onExerciseItemClickListener = {
             findNavController().navigate(TrainingFragmentDirections.actionTrainingFragmentToStartTrainFragment(it))
+        }
+
+        trainingAdapter.onActiveCheckBoxClickListener = {
+            viewModel.updateActiveToInactive(it)
+        }
+
+        trainingAdapter.onInactiveCheckBoxClickListener = {
+            viewModel.updateInactiveToActive(it)
         }
 
         viewModel.getCurrentDay.observe(viewLifecycleOwner){

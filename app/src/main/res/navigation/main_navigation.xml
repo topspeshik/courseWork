@@ -61,5 +61,8 @@
             app:destination="@id/trainingFragment"
             app:exitAnim="@android:anim/fade_out"
             app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="dayId"
+            app:argType="integer" />
     </fragment>
 </navigation>
