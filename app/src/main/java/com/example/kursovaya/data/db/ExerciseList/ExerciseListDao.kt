@@ -1,4 +1,4 @@
-package com.example.kursovaya.data.db
+package com.example.kursovaya.data.db.ExerciseList
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

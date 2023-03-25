@@ -1,4 +1,4 @@
-package com.example.kursovaya.domain.db.Network
+package com.example.kursovaya.domain.db.NetworkList
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

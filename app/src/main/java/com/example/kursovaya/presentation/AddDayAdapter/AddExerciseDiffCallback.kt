@@ -1,8 +1,7 @@
 package com.example.kursovaya.presentation.AddDayAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.kursovaya.data.db.models.NetworkItemDbModel
-import com.example.kursovaya.domain.db.Network.NetworkItem
+import com.example.kursovaya.domain.db.NetworkList.NetworkItem
 
 object AddExerciseDiffCallback : DiffUtil.ItemCallback<NetworkItem>() {
 

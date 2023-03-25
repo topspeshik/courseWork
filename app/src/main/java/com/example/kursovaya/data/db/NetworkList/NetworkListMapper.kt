@@ -1,7 +1,7 @@
 package com.example.kursovaya.data.db.NetworkList
 
 import com.example.kursovaya.data.db.models.NetworkItemDbModel
-import com.example.kursovaya.domain.db.Network.NetworkItem
+import com.example.kursovaya.domain.db.NetworkList.NetworkItem
 
 class NetworkListMapper {
     private fun mapNetworkDbToEntity(networkItemDbModel: NetworkItemDbModel) = NetworkItem(

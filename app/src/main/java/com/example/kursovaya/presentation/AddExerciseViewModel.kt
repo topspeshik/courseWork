@@ -6,14 +6,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kursovaya.data.db.AppDatabase
+import com.example.kursovaya.data.db.ExerciseList.ExerciseListRepositoryImpl
 import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.data.db.models.ExerciseItemDbModel
+import com.example.kursovaya.domain.db.ExerciseList.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
 class AddExerciseViewModel(application: Application) : AndroidViewModel(application) {
+
+
+    private val exerciseListRepository = ExerciseListRepositoryImpl(application)
+    private val addExerciseItemUseCase: addExerciseItemUseCase = addExerciseItemUseCase(exerciseListRepository)
+    private val getCurrentIdUseCase: getCurrentIdUseCase = getCurrentIdUseCase(exerciseListRepository)
 
 
     private val appDatabase = AppDatabase.getInstance(getApplication())
@@ -31,8 +38,8 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
         val kg = parseCount(inputKg)
         if (validateInput(sets,reps,kg)) {
             viewModelScope.launch {
-                appDatabase.exerciseListDao().addExerciseItem(
-                    ExerciseItemDbModel(
+                addExerciseItemUseCase(
+                    ExerciseItem(
                         ex_name,
                         sets,
                         reps,
@@ -40,7 +47,7 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                     )
                 )
                 withContext(Dispatchers.IO){
-                    val exercise_id = appDatabase.exerciseListDao().getCurrentId()
+                    val exercise_id = getCurrentIdUseCase()
                     appDatabase.dayExerciseSettingsDao().addDayExerciseItem(
                         DayExerciseSettingsDbModel(
                             day_id,

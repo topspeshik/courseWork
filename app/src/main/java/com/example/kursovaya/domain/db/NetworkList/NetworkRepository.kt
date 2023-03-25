@@ -1,4 +1,4 @@
-package com.example.kursovaya.domain.db.Network
+package com.example.kursovaya.domain.db.NetworkList
 
 import androidx.lifecycle.LiveData
 

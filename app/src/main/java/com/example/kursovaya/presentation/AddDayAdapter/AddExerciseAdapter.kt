@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
-import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.databinding.ItemExerciseAddBinding
-import com.example.kursovaya.domain.db.Network.NetworkItem
+import com.example.kursovaya.domain.db.NetworkList.NetworkItem
 
 class AddExerciseAdapter : ListAdapter<NetworkItem, AddExerciseViewHolder>(AddExerciseDiffCallback) {
 
