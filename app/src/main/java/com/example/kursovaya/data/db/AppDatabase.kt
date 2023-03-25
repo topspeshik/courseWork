@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.kursovaya.data.db.NetworkList.NetworkListDao
 import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.data.db.models.ExerciseItemDbModel
 import com.example.kursovaya.data.db.models.NetworkItemDbModel

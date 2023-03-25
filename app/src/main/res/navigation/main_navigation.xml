@@ -34,7 +34,7 @@
         android:label="AddExerciseFragment" >
         <argument
             android:name="training"
-            app:argType="com.example.kursovaya.data.db.models.NetworkItemDbModel" />
+            app:argType="com.example.kursovaya.domain.db.Network.NetworkItem" />
     </fragment>
     <fragment
         android:id="@+id/startTrainFragment"

@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.databinding.ItemExerciseAddBinding
+import com.example.kursovaya.domain.db.Network.NetworkItem
 
-class AddExerciseAdapter : ListAdapter<NetworkItemDbModel, AddExerciseViewHolder>(AddExerciseDiffCallback) {
+class AddExerciseAdapter : ListAdapter<NetworkItem, AddExerciseViewHolder>(AddExerciseDiffCallback) {
 
-    var onExerciseItemClickListener: ((NetworkItemDbModel) -> Unit)? = null
+    var onExerciseItemClickListener: ((NetworkItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddExerciseViewHolder {
         val binding = ItemExerciseAddBinding.inflate(
