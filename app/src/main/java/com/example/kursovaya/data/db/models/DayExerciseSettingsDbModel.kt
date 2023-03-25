@@ -1,13 +1,12 @@
 package com.example.kursovaya.data.db.models
 
-import android.os.Parcelable
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 
-@kotlinx.parcelize.Parcelize
 @Entity(
     tableName = "day_exercise_settings_items",
     foreignKeys = [
@@ -25,7 +24,7 @@ data class DayExerciseSettingsDbModel (
     val exercise_id: Int,
     val active: Int
 
-): Parcelable
+)
 {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="dayExercise_id") var dayExercise_id: Int = 0

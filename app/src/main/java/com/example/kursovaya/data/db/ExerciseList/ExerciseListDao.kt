@@ -3,11 +3,8 @@ package com.example.kursovaya.data.db.ExerciseList
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.kursovaya.data.db.models.ExerciseItemDbModel
-import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
-import com.example.kursovaya.data.db.models.NetworkItemDbModel
 
 
 @Dao
@@ -20,7 +17,7 @@ interface ExerciseListDao {
 //    fun getExerciseNetworkList(name: String): LiveData<Map<ExerciseItemDbModel, NetworkItemDbModel>>
 
 //    @Query("SELECT * FROM exercise_items")
-//    fun getExerciseWithNetworkTuple(): LiveData<List<ExerciseWithNetworkTuple>>
+//    fun getExerciseWithNetworkTuple(): LiveData<List<ExerciseWithNetworkTupleDbModel>>
 
     @Query("SELECT id from exercise_items ORDER BY id desc LIMIT 1")
     fun getCurrentId(): Int

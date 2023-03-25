@@ -1,10 +1,9 @@
-package com.example.kursovaya.data.db
+package com.example.kursovaya.data.db.DayExerciseSettings
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
-import com.example.kursovaya.data.db.models.ExerciseItemDbModel
-import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
+import com.example.kursovaya.data.db.models.ExerciseWithNetworkTupleDbModel
 
 @Dao
 interface DayExerciseSettingsDao {
@@ -19,7 +18,7 @@ interface DayExerciseSettingsDao {
     fun getUniqueDaySettingsList(): LiveData<List<DayExerciseSettingsDbModel>>
 
     @Query("SELECT * FROM day_exercise_settings_items LEFT JOIN exercise_items ON exercise_items.id = day_exercise_settings_items.exercise_id WHERE day_id = :id")
-    fun getExerciseListPerDay(id: Int): LiveData<List<ExerciseWithNetworkTuple>>
+    fun getExerciseListPerDay(id: Int): LiveData<List<ExerciseWithNetworkTupleDbModel>>
 
 //    @Query("SELECT DISTINCT day_id from day_exercise_settings_items")
 //    fun getDaysList(): LiveData<List<Int>>

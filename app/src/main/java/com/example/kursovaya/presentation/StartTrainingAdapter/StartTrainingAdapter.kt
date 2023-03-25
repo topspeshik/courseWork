@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
-import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
 import com.example.kursovaya.databinding.ItemExerciseBinding
+import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
 
 
 class StartTrainingAdapter : ListAdapter<ExerciseWithNetworkTuple, StartTrainingViewHolder>(StartTrainingDiffCallback) {

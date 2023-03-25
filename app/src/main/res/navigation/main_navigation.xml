@@ -55,7 +55,7 @@
         tools:layout="@layout/fragment_training_process" >
         <argument
             android:name="exercises"
-            app:argType="com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple[]" />
+            app:argType="com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple[]" />
         <action
             android:id="@+id/action_trainingProcessFragment_to_trainingFragment"
             app:destination="@id/trainingFragment"

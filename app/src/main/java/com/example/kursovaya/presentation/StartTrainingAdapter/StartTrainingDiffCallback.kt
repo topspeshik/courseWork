@@ -1,7 +1,7 @@
 package com.example.kursovaya.presentation.StartTrainingAdapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
+import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
 
 
 object StartTrainingDiffCallback : DiffUtil.ItemCallback<ExerciseWithNetworkTuple>() {

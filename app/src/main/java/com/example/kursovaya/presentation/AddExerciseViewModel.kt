@@ -5,10 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.kursovaya.data.db.AppDatabase
+import com.example.kursovaya.data.db.DayExerciseSettings.DayExerciseSettingsRepositoryImpl
 import com.example.kursovaya.data.db.ExerciseList.ExerciseListRepositoryImpl
-import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
-import com.example.kursovaya.data.db.models.ExerciseItemDbModel
+import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettings
+import com.example.kursovaya.domain.db.DayExerciseSettings.addDayExerciseItemUseCase
 import com.example.kursovaya.domain.db.ExerciseList.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +23,10 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
     private val getCurrentIdUseCase: getCurrentIdUseCase = getCurrentIdUseCase(exerciseListRepository)
 
 
-    private val appDatabase = AppDatabase.getInstance(getApplication())
+    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
+    private val addDayExerciseItemUseCase = addDayExerciseItemUseCase(dayExerciseSettingsRepository)
+
+
     private val _errorInputCount = MutableLiveData<Boolean>()
     val errorInputCount: LiveData<Boolean>
         get() = _errorInputCount
@@ -48,8 +51,8 @@ class AddExerciseViewModel(application: Application) : AndroidViewModel(applicat
                 )
                 withContext(Dispatchers.IO){
                     val exercise_id = getCurrentIdUseCase()
-                    appDatabase.dayExerciseSettingsDao().addDayExerciseItem(
-                        DayExerciseSettingsDbModel(
+                    addDayExerciseItemUseCase(
+                        DayExerciseSettings(
                             day_id,
                             exercise_id ,
                             1

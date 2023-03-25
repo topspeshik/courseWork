@@ -3,7 +3,7 @@ package com.example.kursovaya.presentation
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
+import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
 
 class TrainingProcessViewModelFactory(
     private val application: Application,

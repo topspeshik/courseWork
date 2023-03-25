@@ -6,12 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.ListAdapter
 import com.example.kursovaya.R
-import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.databinding.ItemDayDisabledBinding
 import com.example.kursovaya.databinding.ItemDayEnabledBinding
+import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettings
 
 
-class TrainingAdapter : ListAdapter<DayExerciseSettingsDbModel, TrainingViewHolder>(TrainingDiffCallback()) {
+class TrainingAdapter : ListAdapter<DayExerciseSettings, TrainingViewHolder>(TrainingDiffCallback()) {
 
     var onExerciseItemClickListener: ((Int) -> Unit)? = null
     var onActiveCheckBoxClickListener: ((Int) -> Unit)? = null

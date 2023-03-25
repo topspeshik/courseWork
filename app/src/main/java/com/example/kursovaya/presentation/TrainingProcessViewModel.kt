@@ -5,9 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kursovaya.data.db.AppDatabase
+import com.example.kursovaya.data.db.DayExerciseSettings.DayExerciseSettingsRepositoryImpl
 
-import com.example.kursovaya.data.db.models.ExerciseWithNetworkTuple
+import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
+import com.example.kursovaya.domain.db.DayExerciseSettings.updateActiveToInactiveUseCase
 import kotlinx.coroutines.launch
 
 class TrainingProcessViewModel(
@@ -19,7 +20,9 @@ class TrainingProcessViewModel(
     private var count = 0
     private var countSets = 0
 
-    private val appDatabase = AppDatabase.getInstance(application)
+
+    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
+    private val updateActiveToInactiveUseCase: updateActiveToInactiveUseCase = updateActiveToInactiveUseCase(dayExerciseSettingsRepository)
 
 
     private val _progress = MutableLiveData<Int>()
@@ -63,7 +66,7 @@ class TrainingProcessViewModel(
         countSets = 1
         if (count >= exercisesArgs.size) {
             viewModelScope.launch {
-                appDatabase.dayExerciseSettingsDao().updateActiveToInactive(dayId)
+                updateActiveToInactiveUseCase(dayId)
 
             }
             _shouldAlertShow.value = true

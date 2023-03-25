@@ -3,33 +3,40 @@ package com.example.kursovaya.presentation
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kursovaya.data.db.AppDatabase
-import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
+import com.example.kursovaya.data.db.DayExerciseSettings.DayExerciseSettingsRepositoryImpl
+import com.example.kursovaya.domain.db.DayExerciseSettings.*
 import kotlinx.coroutines.launch
 
 
 class TrainingViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val appDatabase = AppDatabase.getInstance(getApplication())
-    val daysList =  appDatabase.dayExerciseSettingsDao().getUniqueDaySettingsList()
 
-    val getCurrentDay = appDatabase.dayExerciseSettingsDao().getCurrentDay()
+    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
+    private val getUniqueDaySettingsListUseCase: getUniqueDaySettingsListUseCase = getUniqueDaySettingsListUseCase(dayExerciseSettingsRepository)
+    private val getCurrentDayUseCase: getCurrentDayUseCase = getCurrentDayUseCase(dayExerciseSettingsRepository)
+    private val updateActiveToInactiveUseCase: updateActiveToInactiveUseCase = updateActiveToInactiveUseCase(dayExerciseSettingsRepository)
+    private val updateInactiveToActiveUseCase: updateInactiveToActiveUseCase = updateInactiveToActiveUseCase(dayExerciseSettingsRepository)
+    private val deleteDayItemUseCase = deleteDayItemUseCase(dayExerciseSettingsRepository)
+
+    val daysList =  getUniqueDaySettingsListUseCase()
+
+    val getCurrentDay = getCurrentDayUseCase()
 
     fun updateActiveToInactive(day_id: Int){
         viewModelScope.launch {
-            appDatabase.dayExerciseSettingsDao().updateActiveToInactive(day_id)
+            updateActiveToInactiveUseCase(day_id)
         }
     }
 
     fun updateInactiveToActive(day_id: Int){
         viewModelScope.launch {
-            appDatabase.dayExerciseSettingsDao().updateInactiveToActive(day_id)
+            updateInactiveToActiveUseCase(day_id)
         }
     }
 
-    fun deleteDayItem(dayExerciseSettingsDbModel: DayExerciseSettingsDbModel){
+    fun deleteDayItem(dayExerciseSettings: DayExerciseSettings){
         viewModelScope.launch {
-            appDatabase.dayExerciseSettingsDao().deleteDayItem(dayExerciseSettingsDbModel.day_id)
+            deleteDayItemUseCase(dayExerciseSettings.day_id)
         }
     }
 

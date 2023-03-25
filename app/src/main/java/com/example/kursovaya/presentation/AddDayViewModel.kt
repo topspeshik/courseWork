@@ -2,7 +2,6 @@ package com.example.kursovaya.presentation
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.kursovaya.data.db.AppDatabase
 import com.example.kursovaya.data.db.NetworkList.NetworkRepositoryImpl
 import com.example.kursovaya.data.network.ApiFactory
 import com.example.kursovaya.data.network.TrainingMapper
