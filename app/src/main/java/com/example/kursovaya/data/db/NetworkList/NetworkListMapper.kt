@@ -4,7 +4,7 @@ import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.domain.db.NetworkList.NetworkItem
 
 class NetworkListMapper {
-    private fun mapNetworkDbToEntity(networkItemDbModel: NetworkItemDbModel) = NetworkItem(
+    fun mapNetworkDbToEntity(networkItemDbModel: NetworkItemDbModel) = NetworkItem(
         exercise_name = networkItemDbModel.exercise_name,
         urlimg = networkItemDbModel.urlimg,
         urlgif = networkItemDbModel.urlgif

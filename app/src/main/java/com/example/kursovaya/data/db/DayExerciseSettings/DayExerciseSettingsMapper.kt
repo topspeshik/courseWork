@@ -1,11 +1,16 @@
 package com.example.kursovaya.data.db.DayExerciseSettings
 
+import com.example.kursovaya.data.db.ExerciseList.ExerciseListMapper
+import com.example.kursovaya.data.db.NetworkList.NetworkListMapper
 import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.data.db.models.ExerciseWithNetworkTupleDbModel
 import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettings
 import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
 
 class DayExerciseSettingsMapper {
+
+    private val mapperExercise = ExerciseListMapper()
+    private val mapperNetwork = NetworkListMapper()
 
     private fun mapDayExerciseSettingsDbToEntity(dayExerciseSettingsDbModel: DayExerciseSettingsDbModel) = DayExerciseSettings(
         day_id = dayExerciseSettingsDbModel.day_id,
@@ -21,8 +26,8 @@ class DayExerciseSettingsMapper {
     )
 
     fun mapTupleDbToEntity(exerciseWithNetworkTupleDbModel: ExerciseWithNetworkTupleDbModel) = ExerciseWithNetworkTuple(
-        exercise = exerciseWithNetworkTupleDbModel.exercise,
-        network = exerciseWithNetworkTupleDbModel.network
+        exercise =  mapperExercise.mapExerciseDbToEntity(exerciseWithNetworkTupleDbModel.exercise),
+        network = mapperNetwork.mapNetworkDbToEntity(exerciseWithNetworkTupleDbModel.network)
 
     )
 

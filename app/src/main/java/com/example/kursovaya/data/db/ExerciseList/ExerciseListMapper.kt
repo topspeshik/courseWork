@@ -8,7 +8,7 @@ import com.example.kursovaya.domain.db.NetworkList.NetworkItem
 
 class ExerciseListMapper {
 
-    private fun mapExerciseDbToEntity(exerciseItemDbModel: ExerciseItemDbModel) = ExerciseItem(
+    fun mapExerciseDbToEntity(exerciseItemDbModel: ExerciseItemDbModel) = ExerciseItem(
         name = exerciseItemDbModel.name,
         sets = exerciseItemDbModel.sets,
         reps = exerciseItemDbModel.reps,
