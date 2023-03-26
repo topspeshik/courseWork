@@ -2,9 +2,10 @@ package com.example.kursovaya.domain.db.ExerciseList
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import javax.inject.Inject
 
 @Parcelize
-data class ExerciseItem (
+data class ExerciseItem @Inject constructor (
     val name: String,
     val sets: Int,
     val reps: Int,

@@ -1,10 +1,7 @@
 package com.example.kursovaya.presentation
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.kursovaya.data.db.DayExerciseSettings.DayExerciseSettingsRepositoryImpl
 import com.example.kursovaya.data.db.ExerciseList.ExerciseListRepositoryImpl
 import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettings
@@ -13,18 +10,23 @@ import com.example.kursovaya.domain.db.ExerciseList.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class AddExerciseViewModel(application: Application) : AndroidViewModel(application) {
+class AddExerciseViewModel @Inject constructor(
+    private val addExerciseItemUseCase: addExerciseItemUseCase,
+    private val getCurrentIdUseCase: getCurrentIdUseCase,
+    private val addDayExerciseItemUseCase : addDayExerciseItemUseCase
+) : ViewModel() {
 
 
-    private val exerciseListRepository = ExerciseListRepositoryImpl(application)
-    private val addExerciseItemUseCase: addExerciseItemUseCase = addExerciseItemUseCase(exerciseListRepository)
-    private val getCurrentIdUseCase: getCurrentIdUseCase = getCurrentIdUseCase(exerciseListRepository)
-
-
-    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
-    private val addDayExerciseItemUseCase = addDayExerciseItemUseCase(dayExerciseSettingsRepository)
+//    private val exerciseListRepository = ExerciseListRepositoryImpl(application)
+//    private val addExerciseItemUseCase: addExerciseItemUseCase = addExerciseItemUseCase(exerciseListRepository)
+//    private val getCurrentIdUseCase: getCurrentIdUseCase = getCurrentIdUseCase(exerciseListRepository)
+//
+//
+//    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
+//    private val addDayExerciseItemUseCase = addDayExerciseItemUseCase(dayExerciseSettingsRepository)
 
 
     private val _errorInputCount = MutableLiveData<Boolean>()

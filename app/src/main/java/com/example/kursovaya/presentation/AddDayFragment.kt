@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.kursovaya.databinding.FragmentAddDayBinding
 import com.example.kursovaya.presentation.AddDayAdapter.AddExerciseAdapter
+import javax.inject.Inject
 
 
 class AddDayFragment : Fragment() {
@@ -19,6 +20,9 @@ class AddDayFragment : Fragment() {
 
     private var _binding: FragmentAddDayBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +34,7 @@ class AddDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[AddDayViewModel::class.java]
+        viewModel = ViewModelProvider(this,viewModelFactory)[AddDayViewModel::class.java]
         addExerciseAdapter = AddExerciseAdapter()
         binding.rvExercisesList.adapter = addExerciseAdapter
         binding.tvDay.text =  "День ${TrainingFragment.DAY_ID}"

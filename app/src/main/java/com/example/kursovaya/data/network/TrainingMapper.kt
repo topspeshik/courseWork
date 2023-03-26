@@ -4,8 +4,9 @@ import com.example.kursovaya.data.network.model.TrainingDto
 import com.example.kursovaya.data.network.model.UpdateDateDto
 import com.example.kursovaya.domain.network.Training
 import com.example.kursovaya.domain.network.UpdateDate
+import javax.inject.Inject
 
-class TrainingMapper {
+class TrainingMapper  @Inject constructor(){
     fun mapTrainingDtoToEntity(trainingDto: TrainingDto) = Training(
         id = trainingDto.id,
         name = trainingDto.name,

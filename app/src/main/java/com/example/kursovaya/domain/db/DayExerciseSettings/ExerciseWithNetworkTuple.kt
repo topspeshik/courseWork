@@ -6,9 +6,10 @@ import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.domain.db.ExerciseList.ExerciseItem
 import com.example.kursovaya.domain.db.NetworkList.NetworkItem
 import kotlinx.parcelize.Parcelize
+import javax.inject.Inject
 
 @Parcelize
-data class ExerciseWithNetworkTuple (
+data class ExerciseWithNetworkTuple @Inject constructor(
 
     val exercise: ExerciseItem,
 

@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kursovaya.databinding.FragmentAddExerciseBinding
-
+import javax.inject.Inject
 
 
 class AddExerciseFragment : Fragment() {
@@ -23,6 +23,9 @@ class AddExerciseFragment : Fragment() {
 
     private var _binding: FragmentAddExerciseBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +37,7 @@ class AddExerciseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[AddExerciseViewModel::class.java]
+        viewModel = ViewModelProvider(this,viewModelFactory)[AddExerciseViewModel::class.java]
 
         with(binding){
             tvExercise.text = args.training.exercise_name

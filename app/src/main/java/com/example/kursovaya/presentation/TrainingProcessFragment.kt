@@ -17,15 +17,20 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kursovaya.R
 import com.example.kursovaya.databinding.FragmentTrainingProcessBinding
-
+import javax.inject.Inject
 
 
 class TrainingProcessFragment : Fragment() {
 
     private val args by navArgs<TrainingProcessFragmentArgs>()
-    private val viewModelFactory by lazy {
-        TrainingProcessViewModelFactory(requireActivity().application, args.exercises, args.dayId)
-    }
+
+
+    @Inject
+//    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var viewModelFactory: TrainingProcessViewModelFactory
+//    private val viewModelFactory by lazy {
+//        TrainingProcessViewModelFactory(requireActivity().application, args.exercises, args.dayId)
+//    }
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[TrainingProcessViewModel::class.java]
     }

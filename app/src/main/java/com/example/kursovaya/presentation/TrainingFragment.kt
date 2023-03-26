@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kursovaya.R
 import com.example.kursovaya.databinding.FragmentTrainingBinding
 import com.example.kursovaya.presentation.TrainingAdapter.TrainingAdapter
+import javax.inject.Inject
 
 class TrainingFragment : Fragment() {
 
@@ -21,6 +22,9 @@ class TrainingFragment : Fragment() {
 
     private var _binding: FragmentTrainingBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +37,7 @@ class TrainingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[TrainingViewModel::class.java]
+        viewModel = ViewModelProvider(this,viewModelFactory)[TrainingViewModel::class.java]
         trainingAdapter = TrainingAdapter()
         binding.rvDaysList.adapter = trainingAdapter
 

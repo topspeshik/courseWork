@@ -7,12 +7,14 @@ import com.example.kursovaya.data.db.AppDatabase
 import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettings
 import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettingsRepository
 import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
+import javax.inject.Inject
 
-class DayExerciseSettingsRepositoryImpl(
-    application: Application
+class DayExerciseSettingsRepositoryImpl @Inject constructor(
+    private val dayExerciseSettingsDao: DayExerciseSettingsDao,
+    private val mapper: DayExerciseSettingsMapper
 ) : DayExerciseSettingsRepository {
-    private val dayExerciseSettingsDao: DayExerciseSettingsDao = AppDatabase.getInstance(application).dayExerciseSettingsDao()
-    private val mapper: DayExerciseSettingsMapper = DayExerciseSettingsMapper()
+//    private val dayExerciseSettingsDao: DayExerciseSettingsDao = AppDatabase.getInstance(application).dayExerciseSettingsDao()
+//    private val mapper: DayExerciseSettingsMapper = DayExerciseSettingsMapper()
 
     override fun getCurrentDay(): LiveData<Int> {
         return Transformations.map(dayExerciseSettingsDao.getCurrentDay()){

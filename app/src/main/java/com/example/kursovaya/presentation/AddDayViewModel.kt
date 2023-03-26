@@ -12,17 +12,23 @@ import com.example.kursovaya.domain.db.NetworkList.searchNameUseCase
 import com.example.kursovaya.domain.network.getTrainingListUseCase
 import com.example.kursovaya.domain.network.getUpdateInfoUseCase
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddDayViewModel(application: Application)  : AndroidViewModel(application) {
+class AddDayViewModel @Inject constructor(
+    private val getTrainingListUseCase :getTrainingListUseCase,
+    private val getUpdateInfoUseCase : getUpdateInfoUseCase,
+    private val addNetworkItemUseCase : addNetworkItemUseCase,
+    private val searchNameUseCase : searchNameUseCase
+)  : ViewModel() {
 
 
-    private val trainingRepository = TrainingRepositoryImpl(ApiFactory, TrainingMapper())
-    private val getTrainingListUseCase = getTrainingListUseCase(trainingRepository)
-    private val getUpdateInfoUseCase = getUpdateInfoUseCase(trainingRepository)
-
-    private val networkRepository = NetworkRepositoryImpl(application)
-    private val addNetworkItemUseCase = addNetworkItemUseCase(networkRepository)
-    private val searchNameUseCase = searchNameUseCase(networkRepository)
+//    private val trainingRepository = TrainingRepositoryImpl(ApiFactory, TrainingMapper())
+//    private val getTrainingListUseCase = getTrainingListUseCase(trainingRepository)
+//    private val getUpdateInfoUseCase = getUpdateInfoUseCase(trainingRepository)
+//
+//    private val networkRepository = NetworkRepositoryImpl(application)
+//    private val addNetworkItemUseCase = addNetworkItemUseCase(networkRepository)
+//    private val searchNameUseCase = searchNameUseCase(networkRepository)
     private var lastUpdate: String = ""
 
     fun getTrainingList(sym: String): LiveData<List<NetworkItem>> {

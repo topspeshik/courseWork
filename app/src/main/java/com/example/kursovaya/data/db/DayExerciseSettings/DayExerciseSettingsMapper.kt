@@ -6,8 +6,9 @@ import com.example.kursovaya.data.db.models.DayExerciseSettingsDbModel
 import com.example.kursovaya.data.db.models.ExerciseWithNetworkTupleDbModel
 import com.example.kursovaya.domain.db.DayExerciseSettings.DayExerciseSettings
 import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
+import javax.inject.Inject
 
-class DayExerciseSettingsMapper {
+class DayExerciseSettingsMapper @Inject constructor(){
 
     private val mapperExercise = ExerciseListMapper()
     private val mapperNetwork = NetworkListMapper()

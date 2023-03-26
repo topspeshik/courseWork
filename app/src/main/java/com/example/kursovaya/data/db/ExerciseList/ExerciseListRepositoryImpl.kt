@@ -6,13 +6,15 @@ import androidx.lifecycle.Transformations
 import com.example.kursovaya.data.db.AppDatabase
 import com.example.kursovaya.domain.db.ExerciseList.ExerciseItem
 import com.example.kursovaya.domain.db.ExerciseList.ExerciseListRepository
+import javax.inject.Inject
 
 
-class ExerciseListRepositoryImpl(
-    application: Application
+class ExerciseListRepositoryImpl @Inject constructor(
+    private val exerciseListDao: ExerciseListDao ,
+        private val mapper: ExerciseListMapper
 ) : ExerciseListRepository  {
-    private val exerciseListDao: ExerciseListDao = AppDatabase.getInstance(application).exerciseListDao()
-    private val mapper: ExerciseListMapper = ExerciseListMapper()
+//    private val exerciseListDao: ExerciseListDao = AppDatabase.getInstance(application).exerciseListDao()
+//    private val mapper: ExerciseListMapper = ExerciseListMapper()
 
     override fun getExerciseList(): LiveData<List<ExerciseItem>> {
         return Transformations.map(exerciseListDao.getExerciseList()){

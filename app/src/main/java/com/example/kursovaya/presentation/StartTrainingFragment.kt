@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.kursovaya.databinding.FragmentStartTrainingBinding
 import com.example.kursovaya.presentation.StartTrainingAdapter.StartTrainingAdapter
-
+import javax.inject.Inject
 
 
 class StartTrainFragment : Fragment() {
@@ -22,6 +22,9 @@ class StartTrainFragment : Fragment() {
     private var _binding: FragmentStartTrainingBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +35,7 @@ class StartTrainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[StartTrainingViewModel::class.java]
+        viewModel = ViewModelProvider(this,viewModelFactory)[StartTrainingViewModel::class.java]
         startTrainingAdapter = StartTrainingAdapter()
         binding.rvExercises.adapter = startTrainingAdapter
 

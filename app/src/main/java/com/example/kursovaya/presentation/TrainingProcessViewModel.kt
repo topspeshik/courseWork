@@ -10,19 +10,20 @@ import com.example.kursovaya.data.db.DayExerciseSettings.DayExerciseSettingsRepo
 import com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple
 import com.example.kursovaya.domain.db.DayExerciseSettings.updateActiveToInactiveUseCase
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TrainingProcessViewModel(
-    application: Application,
+class TrainingProcessViewModel @Inject constructor(
     private val exercisesArgs: Array<ExerciseWithNetworkTuple>,
-    private val dayId: Int
+    private val dayId: Int,
+    private val updateActiveToInactiveUseCase: updateActiveToInactiveUseCase
 ) : ViewModel(){
 
     private var count = 0
     private var countSets = 0
 
 
-    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
-    private val updateActiveToInactiveUseCase: updateActiveToInactiveUseCase = updateActiveToInactiveUseCase(dayExerciseSettingsRepository)
+//    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
+//    private val updateActiveToInactiveUseCase: updateActiveToInactiveUseCase = updateActiveToInactiveUseCase(dayExerciseSettingsRepository)
 
 
     private val _progress = MutableLiveData<Int>()

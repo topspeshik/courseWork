@@ -2,8 +2,9 @@ package com.example.kursovaya.data.db.NetworkList
 
 import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.domain.db.NetworkList.NetworkItem
+import javax.inject.Inject
 
-class NetworkListMapper {
+class NetworkListMapper @Inject constructor(){
     fun mapNetworkDbToEntity(networkItemDbModel: NetworkItemDbModel) = NetworkItem(
         exercise_name = networkItemDbModel.exercise_name,
         urlimg = networkItemDbModel.urlimg,

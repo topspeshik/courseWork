@@ -5,8 +5,9 @@ import com.example.kursovaya.data.db.models.NetworkItemDbModel
 import com.example.kursovaya.domain.db.ExerciseList.ExerciseItem
 import com.example.kursovaya.domain.db.ExerciseList.ExerciseListRepository
 import com.example.kursovaya.domain.db.NetworkList.NetworkItem
+import javax.inject.Inject
 
-class ExerciseListMapper {
+class ExerciseListMapper @Inject constructor(){
 
     fun mapExerciseDbToEntity(exerciseItemDbModel: ExerciseItemDbModel) = ExerciseItem(
         name = exerciseItemDbModel.name,
