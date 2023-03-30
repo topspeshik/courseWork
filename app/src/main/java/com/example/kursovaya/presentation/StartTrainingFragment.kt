@@ -25,10 +25,15 @@ class StartTrainFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+    private val component by lazy {
+        (requireActivity().application as TrainingApplication).component
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        component.inject(this)
         _binding = FragmentStartTrainingBinding.inflate(inflater, container, false)
         return binding.root
     }

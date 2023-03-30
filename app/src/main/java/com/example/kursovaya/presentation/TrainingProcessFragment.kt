@@ -27,12 +27,16 @@ class TrainingProcessFragment : Fragment() {
 
     @Inject
 //    lateinit var viewModelFactory: ViewModelFactory
-    lateinit var viewModelFactory: TrainingProcessViewModelFactory
+    lateinit var viewModelFactory: ViewModelFactory
 //    private val viewModelFactory by lazy {
 //        TrainingProcessViewModelFactory(requireActivity().application, args.exercises, args.dayId)
 //    }
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[TrainingProcessViewModel::class.java]
+    }
+
+    private val component by lazy {
+        (requireActivity().application as TrainingApplication).component
     }
 
     private var _binding: FragmentTrainingProcessBinding? = null
@@ -42,13 +46,15 @@ class TrainingProcessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        component.inject(this)
+        //viewModel.initArgs(args.exercises, args.dayId)
         _binding = FragmentTrainingProcessBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.initArgs(args.exercises, args.dayId)
         observeViewModel()
 
         binding.chronometer.base = SystemClock.elapsedRealtime()

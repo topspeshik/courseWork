@@ -13,13 +13,22 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TrainingProcessViewModel @Inject constructor(
-    private val exercisesArgs: Array<ExerciseWithNetworkTuple>,
-    private val dayId: Int,
+//    private val exercisesArgs: Array<ExerciseWithNetworkTuple>,
+//    private val dayId: Int,
     private val updateActiveToInactiveUseCase: updateActiveToInactiveUseCase
 ) : ViewModel(){
 
+
+    private lateinit var exercisesArgs: Array<ExerciseWithNetworkTuple>
+    private var dayId: Int = 0
     private var count = 0
     private var countSets = 0
+
+    fun initArgs(exerciseArgs: Array<ExerciseWithNetworkTuple>, day:Int ) {
+        exercisesArgs = exerciseArgs
+        dayId = day
+        _exercise.value = exercisesArgs[count]
+    }
 
 
 //    private val dayExerciseSettingsRepository = DayExerciseSettingsRepositoryImpl(application)
@@ -46,9 +55,9 @@ class TrainingProcessViewModel @Inject constructor(
     val shouldAlertShow: LiveData<Boolean>
         get() = _shouldAlertShow
 
-    init {
-        _exercise.value = exercisesArgs[count]
-    }
+//    init {
+//        _exercise.value = exercisesArgs[count]
+//    }
 
 
 
