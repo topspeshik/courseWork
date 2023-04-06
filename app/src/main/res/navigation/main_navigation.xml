@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="com.example.kursovaya.presentation.TrainingFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.TrainingFragment"
         android:label="fragment_train"
         tools:layout="@layout/fragment_training" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/addDayFragment"
-        android:name="com.example.kursovaya.presentation.AddDayFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.AddDayFragment"
         android:label="AddDayFragment" >
         <action
             android:id="@+id/action_addDayFragment_to_addExerciseFragment"
@@ -30,15 +30,15 @@
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
-        android:name="com.example.kursovaya.presentation.AddExerciseFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.AddExerciseFragment"
         android:label="AddExerciseFragment" >
         <argument
             android:name="training"
-            app:argType="com.example.kursovaya.domain.db.NetworkList.NetworkItem" />
+            app:argType="com.example.kursovaya.domain.Training.db.NetworkList.NetworkItem" />
     </fragment>
     <fragment
         android:id="@+id/startTrainFragment"
-        android:name="com.example.kursovaya.presentation.StartTrainFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.StartTrainFragment"
         android:label="StartTrainFragment" >
         <argument
             android:name="day"
@@ -50,12 +50,12 @@
     </fragment>
     <fragment
         android:id="@+id/trainingProcessFragment"
-        android:name="com.example.kursovaya.presentation.TrainingProcessFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.TrainingProcessFragment"
         android:label="fragment_training_process"
         tools:layout="@layout/fragment_training_process" >
         <argument
             android:name="exercises"
-            app:argType="com.example.kursovaya.domain.db.DayExerciseSettings.ExerciseWithNetworkTuple[]" />
+            app:argType="com.example.kursovaya.domain.Training.db.DayExerciseSettings.ExerciseWithNetworkTuple[]" />
         <action
             android:id="@+id/action_trainingProcessFragment_to_trainingFragment"
             app:destination="@id/trainingFragment"

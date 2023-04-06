@@ -1,7 +1,7 @@
 package com.example.kursovaya.di
 
 import android.app.Application
-import com.example.kursovaya.presentation.*
+import com.example.kursovaya.presentation.Training.StartTrainingAdapter.*
 import dagger.BindsInstance
 import dagger.Component
 

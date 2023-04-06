@@ -1,7 +1,7 @@
 package com.example.kursovaya.di
 
 import androidx.lifecycle.ViewModel
-import com.example.kursovaya.presentation.*
+import com.example.kursovaya.presentation.Training.StartTrainingAdapter.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
