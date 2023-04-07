@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/trainingFragment">
+    app:startDestination="@id/foodFragment">
 
     <fragment
         android:id="@+id/trainingFragment"
@@ -65,4 +65,28 @@
             android:name="dayId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.kursovaya.presentation.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" >
+        <action
+            android:id="@+id/action_foodFragment_to_addFoodFragment"
+            app:destination="@id/addFoodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFoodFragment"
+        android:name="com.example.kursovaya.presentation.AddFoodFragment"
+        android:label="AddFoodFragment" >
+        <action
+            android:id="@+id/action_addFoodFragment_to_addMealFragment"
+            app:destination="@id/addMealFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMealFragment"
+        android:name="com.example.kursovaya.presentation.AddMealFragment"
+        android:label="AddMealFragment" />
 </navigation>

@@ -1,11 +1,9 @@
-package com.example.kursovaya.data.Food.BreakfastList
+package com.example.kursovaya.data.Food.db.BreakfastList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.example.kursovaya.domain.Food.db.BreakfastList.BreakfastItem
 import com.example.kursovaya.domain.Food.db.BreakfastList.BreakfastListRepository
-import com.example.kursovaya.domain.Training.db.ExerciseList.ExerciseItem
-import com.example.kursovaya.domain.Training.db.ExerciseList.ExerciseListRepository
 import javax.inject.Inject
 
 

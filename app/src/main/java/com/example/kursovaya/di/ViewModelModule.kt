@@ -1,6 +1,7 @@
 package com.example.kursovaya.di
 
 import androidx.lifecycle.ViewModel
+import com.example.kursovaya.presentation.AddFoodViewModel
 import com.example.kursovaya.presentation.Training.StartTrainingAdapter.*
 import dagger.Binds
 import dagger.Module
@@ -32,4 +33,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(TrainingViewModel::class)
     fun bindTrainingViewModel(viewModel: TrainingViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddFoodViewModel::class)
+    fun bindAddFoodViewModel(viewModel: AddFoodViewModel): ViewModel
 }

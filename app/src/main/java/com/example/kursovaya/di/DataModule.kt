@@ -1,6 +1,12 @@
 package com.example.kursovaya.di
 
 import android.app.Application
+import com.example.kursovaya.data.Food.db.BreakfastList.BreakfastListDao
+import com.example.kursovaya.data.Food.db.BreakfastList.BreakfastListRepositoryImpl
+import com.example.kursovaya.data.Food.db.FoodDatabase
+import com.example.kursovaya.data.Food.db.FoodNetwork.FoodNetworkListDao
+import com.example.kursovaya.data.Food.db.FoodNetwork.FoodNetworkRepositoryImpl
+import com.example.kursovaya.data.Food.network.FoodRepositoryImpl
 import com.example.kursovaya.data.Training.db.AppDatabase
 import com.example.kursovaya.data.Training.db.DayExerciseSettings.DayExerciseSettingsDao
 import com.example.kursovaya.data.Training.db.DayExerciseSettings.DayExerciseSettingsRepositoryImpl
@@ -8,9 +14,10 @@ import com.example.kursovaya.data.Training.db.ExerciseList.ExerciseListDao
 import com.example.kursovaya.data.Training.db.ExerciseList.ExerciseListRepositoryImpl
 import com.example.kursovaya.data.Training.db.NetworkList.NetworkListDao
 import com.example.kursovaya.data.Training.db.NetworkList.NetworkRepositoryImpl
-import com.example.kursovaya.data.Training.network.ApiFactory
-import com.example.kursovaya.data.Training.network.ApiService
-import com.example.kursovaya.data.Training.network.TrainingRepositoryImpl
+import com.example.kursovaya.data.Training.network.*
+import com.example.kursovaya.domain.Food.db.BreakfastList.BreakfastListRepository
+import com.example.kursovaya.domain.Food.db.FoodNetwork.FoodNetworkRepository
+import com.example.kursovaya.domain.Food.network.FoodRepository
 import com.example.kursovaya.domain.Training.db.DayExerciseSettings.DayExerciseSettingsRepository
 import com.example.kursovaya.domain.Training.db.DayExerciseSettings.ExerciseWithNetworkTuple
 import com.example.kursovaya.domain.Training.db.ExerciseList.ExerciseListRepository
@@ -40,6 +47,18 @@ interface DataModule {
     @ApplicationScope
     @Binds
     fun bindDayExerciseSettingsRepository(impl: DayExerciseSettingsRepositoryImpl): DayExerciseSettingsRepository
+
+    @ApplicationScope
+    @Binds
+    fun bindFoodNetworkRepository(impl: FoodNetworkRepositoryImpl): FoodNetworkRepository
+
+    @ApplicationScope
+    @Binds
+    fun bindBreakfastListRepository(impl: BreakfastListRepositoryImpl): BreakfastListRepository
+
+    @ApplicationScope
+    @Binds
+    fun bindFoodRepository(impl: FoodRepositoryImpl): FoodRepository
 
 
     companion object {
@@ -79,18 +98,35 @@ interface DataModule {
             return ApiFactory
         }
 
-
-        @Provides
         @ApplicationScope
-        fun provideDayId(day_id: Int): Int {
-            return day_id
+        @Provides
+        fun provideBreakfastListDao(
+            application: Application
+        ): BreakfastListDao {
+            return FoodDatabase.getInstance(application).breakfastListDao()
+        }
+
+        @ApplicationScope
+        @Provides
+        fun provideFoodNetworkListDao(
+            application: Application
+        ): FoodNetworkListDao {
+            return FoodDatabase.getInstance(application).foodNetworkListDao()
         }
 
         @Provides
         @ApplicationScope
-        fun provideTuple( exerciseWithNetworkTuple:Array<ExerciseWithNetworkTuple> ): Array<ExerciseWithNetworkTuple> {
-            return exerciseWithNetworkTuple
+        fun provideApiServiceFood(): ApiServiceFood {
+            return ApiFactoryFood.apiService
         }
+
+        @Provides
+        @ApplicationScope
+        fun provideApiFactoryFood(): ApiFactoryFood {
+            return ApiFactoryFood
+        }
+
+
 
 
     }

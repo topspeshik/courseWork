@@ -1,11 +1,11 @@
-package com.example.kursovaya.data.Food.BreakfastList
+package com.example.kursovaya.data.Food.db.BreakfastList
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.kursovaya.data.Food.models.BreakfastItemDbModel
+import com.example.kursovaya.data.Food.db.models.BreakfastItemDbModel
 
 
 @Dao

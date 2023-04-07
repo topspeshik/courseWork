@@ -1,25 +1,27 @@
-package com.example.kursovaya.data.Food
+package com.example.kursovaya.data.Food.db
 
 import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.kursovaya.data.Food.models.BreakfastItemDbModel
-import com.example.kursovaya.data.Training.db.DayExerciseSettings.DayExerciseSettingsDao
-import com.example.kursovaya.data.Training.db.ExerciseList.ExerciseListDao
-import com.example.kursovaya.data.Training.db.NetworkList.NetworkListDao
-
+import com.example.kursovaya.data.Food.db.BreakfastList.BreakfastListDao
+import com.example.kursovaya.data.Food.db.FoodNetwork.FoodNetworkListDao
+import com.example.kursovaya.data.Food.db.models.BreakfastItemDbModel
+import com.example.kursovaya.data.Food.db.models.FoodItemDbModel
 
 
 @Database(
     entities = [
-        BreakfastItemDbModel::class
+        BreakfastItemDbModel::class,
+        FoodItemDbModel::class
         ],
     version = 1,
     exportSchema = false
 )
 abstract class FoodDatabase: RoomDatabase() {
 
+    abstract fun breakfastListDao(): BreakfastListDao
+    abstract fun foodNetworkListDao(): FoodNetworkListDao
 
 
     companion object {

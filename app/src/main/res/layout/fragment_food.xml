@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="25"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="30"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="40"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="225"
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -145,7 +145,7 @@
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:paddingStart="40dp"
-                android:paddingEnd="40dp">
+                android:paddingEnd="10dp">
 
                 <ImageView
                     android:layout_width="55dp"
@@ -225,7 +225,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="25"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -234,7 +234,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="30"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -243,7 +243,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="40"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -304,7 +304,7 @@
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:paddingStart="40dp"
-                android:paddingEnd="40dp">
+                android:paddingEnd="10dp">
 
                 <ImageView
                     android:layout_width="55dp"
@@ -384,7 +384,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="25"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -393,7 +393,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="30"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -402,7 +402,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="40"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -462,7 +462,7 @@
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:paddingStart="40dp"
-                android:paddingEnd="40dp">
+                android:paddingEnd="10dp">
 
                 <ImageView
                     android:layout_width="55dp"
@@ -543,7 +543,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="25"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -552,7 +552,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="30"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -561,7 +561,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="40"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -621,7 +621,7 @@
                 android:orientation="horizontal"
                 android:padding="16dp"
                 android:paddingStart="40dp"
-                android:paddingEnd="40dp">
+                android:paddingEnd="10dp">
 
                 <ImageView
 
@@ -703,7 +703,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="25"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -712,7 +712,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="30"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -721,7 +721,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
-                                android:text="40"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
