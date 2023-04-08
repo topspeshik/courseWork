@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#05071D"
-    >
+    android:background="#05071D">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,7 +32,6 @@
             tools:text="Куриное филе" />
 
         <TextView
-            android:id="@+id/tv_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="30"
@@ -118,6 +116,7 @@
                 android:weightSum="4">
 
                 <TextView
+                    android:id="@+id/tv_protein"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -127,6 +126,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_fats"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -136,6 +136,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_carbs"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -145,6 +146,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tv_kcal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -185,9 +187,9 @@
                 tools:src="@mipmap/ic_launcher" />
 
             <EditText
+                android:id="@+id/et_weight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:gravity="center"
                 android:hint="@string/_100gramm"
                 android:inputType="number"
@@ -252,7 +254,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rvExercises">
 
         <Button
-            android:id="@+id/btn_startTraining"
+            android:id="@+id/btn_saveFood"
             style="@style/buttonAdd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

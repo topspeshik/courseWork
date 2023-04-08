@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.kursovaya.R
 import com.example.kursovaya.databinding.FragmentAddFoodBinding
@@ -76,5 +77,13 @@ class AddFoodFragment : Fragment() {
                 return true
             }
         })
+
+        addFoodAdapter.onFoodItemClickListener = {
+            findNavController().navigate(
+                AddFoodFragmentDirections.actionAddFoodFragmentToAddMealFragment(it,args.name)
+            )
+        }
+
+
     }
 }

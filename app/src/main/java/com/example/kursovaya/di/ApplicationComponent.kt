@@ -2,6 +2,8 @@ package com.example.kursovaya.di
 
 import android.app.Application
 import com.example.kursovaya.presentation.AddFoodFragment
+import com.example.kursovaya.presentation.AddMealFragment
+import com.example.kursovaya.presentation.FoodFragment
 import com.example.kursovaya.presentation.Training.StartTrainingAdapter.*
 import dagger.BindsInstance
 import dagger.Component
@@ -27,6 +29,10 @@ interface ApplicationComponent {
     fun inject(fragment: TrainingProcessFragment)
 
     fun inject(fragment: AddFoodFragment)
+
+    fun inject(fragment: AddMealFragment)
+
+    fun inject(fragment: FoodFragment)
 
 
     @Component.Factory

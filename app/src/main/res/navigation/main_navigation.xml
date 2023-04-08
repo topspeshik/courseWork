@@ -88,5 +88,12 @@
     <fragment
         android:id="@+id/addMealFragment"
         android:name="com.example.kursovaya.presentation.AddMealFragment"
-        android:label="AddMealFragment" />
+        android:label="AddMealFragment" >
+        <argument
+            android:name="FoodItem"
+            app:argType="com.example.kursovaya.domain.Food.db.FoodNetwork.FoodItem" />
+        <argument
+            android:name="nameMeal"
+            app:argType="string" />
+    </fragment>
 </navigation>
