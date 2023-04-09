@@ -12,13 +12,15 @@ class BreakfastListMapper @Inject constructor(){
 
     private val foodMapper = FoodNetworkListMapper()
 
-    fun mapBreakfastDbToEntity(breakfastItemDbModel: BreakfastItemDbModel) = BreakfastItem(
+    private fun mapBreakfastDbToEntity(breakfastItemDbModel: BreakfastItemDbModel) = BreakfastItem(
+        mealTime = breakfastItemDbModel.mealTime,
         food_name = breakfastItemDbModel.food_name,
         weight = breakfastItemDbModel.weight,
         id = breakfastItemDbModel.id
     )
 
     fun mapEntityToBreakfastDb(breakfastItem: BreakfastItem) = BreakfastItemDbModel(
+        mealTime = breakfastItem.mealTime,
         food_name = breakfastItem.food_name,
         weight = breakfastItem.weight
     )
@@ -28,7 +30,7 @@ class BreakfastListMapper @Inject constructor(){
     }
 
 
-    fun mapTupleDbToEntity(breakfastWithFoodTupleDbModel: BreakfastWithFoodTupleDbModel) = BreakfastWithFoodTuple(
+    private fun mapTupleDbToEntity(breakfastWithFoodTupleDbModel: BreakfastWithFoodTupleDbModel) = BreakfastWithFoodTuple(
         breakfastItem = mapBreakfastDbToEntity(breakfastWithFoodTupleDbModel.breakfastItem),
         foodItem = foodMapper.mapNetworkDbToEntity(breakfastWithFoodTupleDbModel.foodItem)
 

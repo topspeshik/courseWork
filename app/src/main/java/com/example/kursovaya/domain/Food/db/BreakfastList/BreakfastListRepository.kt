@@ -9,5 +9,5 @@ interface BreakfastListRepository {
 
     suspend fun addBreakfastItem(breakfastItem: BreakfastItem)
 
-    fun getFullBreakfastFood(): LiveData<List<BreakfastWithFoodTuple>>
+    fun getFullBreakfastFood(meal: String): LiveData<List<BreakfastWithFoodTuple>>
 }

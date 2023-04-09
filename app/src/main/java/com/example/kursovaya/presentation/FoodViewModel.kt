@@ -11,6 +11,7 @@ class FoodViewModel @Inject constructor(
 ): ViewModel() {
 
 
-    fun getBreakfastBJU() = getFullBreakfastFoodUseCase()
+    fun getMealBJU(meal: String) = getFullBreakfastFoodUseCase(meal)
+
 
 }

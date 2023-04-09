@@ -25,8 +25,8 @@ class BreakfastListRepositoryImpl @Inject constructor(
         breakfastListDao.addBreakfastItem(mapper.mapEntityToBreakfastDb(breakfastItem))
     }
 
-    override fun getFullBreakfastFood(): LiveData<List<BreakfastWithFoodTuple>> {
-        return Transformations.map(breakfastListDao.getFullBreakfastFood()){
+    override fun getFullBreakfastFood(meal: String): LiveData<List<BreakfastWithFoodTuple>> {
+        return Transformations.map(breakfastListDao.getFullBreakfastFood(meal)){
             mapper.mapListTupleDbToEntity(it)
         }
     }

@@ -13,10 +13,11 @@ class AddMealViewModel @Inject constructor(
 ): ViewModel() {
 
 
-    fun addBreakfastItem(name: String, weight: Int){
+    fun addBreakfastItem(mealTime: String,name: String, weight: Int){
         viewModelScope.launch {
             addBreakfastItemUseCase(
                 BreakfastItem(
+                    mealTime,
                     name,
                     weight
                 )

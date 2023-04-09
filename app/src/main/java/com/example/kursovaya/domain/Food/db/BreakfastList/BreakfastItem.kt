@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 @Parcelize
 data class BreakfastItem @Inject constructor(
+    val mealTime: String,
     val food_name: String,
     val weight: Int,
     val id: Int = UNDEFINED_ID

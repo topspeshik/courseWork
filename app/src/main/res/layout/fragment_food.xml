@@ -37,8 +37,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="#D9D9D9"
                     android:text="Белки"
+                    android:textColor="#D9D9D9"
                     android:textSize="16sp" />
 
                 <TextView
@@ -80,6 +80,7 @@
                 android:weightSum="4">
 
                 <TextView
+                    android:id="@+id/tv_Proteins"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -89,6 +90,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_Fat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -98,6 +100,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_Carb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -107,6 +110,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tv_kkcal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -151,7 +155,7 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:contentDescription="@string/exercise_image"
-                    android:src="@drawable/morning"/>
+                    android:src="@drawable/morning" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -162,9 +166,9 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:text="Завтрак"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -267,24 +271,19 @@
                     app:srcCompat="@android:drawable/ic_input_add" />
 
 
-
             </LinearLayout>
 
 
             <ListView
-                android:visibility="gone"
                 android:id="@+id/lv_breakfast"
-                android:paddingStart="40dp"
-                android:paddingEnd="40dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:layout_marginTop="20dp"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
+                android:visibility="gone" />
 
         </LinearLayout>
-
-
-
 
 
     </androidx.cardview.widget.CardView>
@@ -316,9 +315,8 @@
                 <ImageView
                     android:layout_width="55dp"
                     android:layout_height="55dp"
-                    android:src="@drawable/day"
                     android:contentDescription="@string/exercise_image"
-                    />
+                    android:src="@drawable/day" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -329,9 +327,9 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:text="Обед"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -389,6 +387,7 @@
                             android:weightSum="3">
 
                             <TextView
+                                android:id="@+id/tv_lProteins"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -398,6 +397,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tv_lFats"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -407,6 +407,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tv_lCarb"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -422,6 +423,7 @@
                 </LinearLayout>
 
                 <ImageView
+
                     android:id="@+id/iv_lunch_add"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -430,21 +432,19 @@
                     app:srcCompat="@android:drawable/ic_input_add" />
 
 
-
             </LinearLayout>
 
 
             <ListView
+                android:id="@+id/lv_lunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:visibility="gone" />
 
         </LinearLayout>
-
-
-
 
 
     </androidx.cardview.widget.CardView>
@@ -474,10 +474,10 @@
                 android:paddingEnd="10dp">
 
                 <ImageView
-                    android:src="@drawable/evening"
                     android:layout_width="55dp"
                     android:layout_height="55dp"
-                    android:contentDescription="@string/exercise_image" />
+                    android:contentDescription="@string/exercise_image"
+                    android:src="@drawable/evening" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -488,9 +488,9 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:text="Ужин"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -548,6 +548,7 @@
                             android:weightSum="3">
 
                             <TextView
+                                android:id="@+id/tv_dProteins"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -557,6 +558,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tv_dFats"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -566,6 +568,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tv_dCarb"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -589,27 +592,25 @@
                     app:srcCompat="@android:drawable/ic_input_add" />
 
 
-
             </LinearLayout>
 
 
             <ListView
+                android:id="@+id/lv_dinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:visibility="gone" />
 
         </LinearLayout>
-
-
-
 
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_snack"
+        android:id="@+id/cv_Snack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -633,11 +634,10 @@
                 android:paddingEnd="10dp">
 
                 <ImageView
-                    android:src="@drawable/night"
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:contentDescription="@string/exercise_image"
-                     />
+                    android:src="@drawable/night" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -648,10 +648,10 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:layout_gravity="center_horizontal"
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:text="Перекус"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -709,6 +709,7 @@
                             android:weightSum="3">
 
                             <TextView
+                                android:id="@+id/tv_nProteins"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -718,6 +719,8 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tv_nFats"
+
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -727,6 +730,8 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tv_nCarb"
+
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -750,21 +755,19 @@
                     app:srcCompat="@android:drawable/ic_input_add" />
 
 
-
             </LinearLayout>
 
 
             <ListView
+                android:id="@+id/lv_snack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:visibility="gone" />
 
         </LinearLayout>
-
-
-
 
 
     </androidx.cardview.widget.CardView>

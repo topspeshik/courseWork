@@ -53,9 +53,8 @@ class AddMealFragment : Fragment() {
         }
 
         binding.btnSaveFood.setOnClickListener{
-            if (args.nameMeal == "Завтрак"){
-                viewModel.addBreakfastItem(args.foodItem.name, binding.etWeight.text.toString().toInt())
-            }
+            viewModel.addBreakfastItem(args.nameMeal, args.foodItem.name, binding.etWeight.text.toString().toInt())
+
 
         }
     }

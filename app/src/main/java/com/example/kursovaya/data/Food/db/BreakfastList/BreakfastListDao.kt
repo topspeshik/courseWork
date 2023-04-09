@@ -19,6 +19,6 @@ interface BreakfastListDao {
     @Query("SELECT * FROM breakfast_items")
     fun getBreakfastList(): LiveData<List<BreakfastItemDbModel>>
 
-    @Query("SELECT * FROM breakfast_items LEFT JOIN FoodNetwork_items ON breakfast_items.food_name = FoodNetwork_items.name")
-    fun getFullBreakfastFood(): LiveData<List<BreakfastWithFoodTupleDbModel>>
+    @Query("SELECT * FROM breakfast_items LEFT JOIN FoodNetwork_items ON breakfast_items.food_name = FoodNetwork_items.name WHERE mealTime = :meal ")
+    fun getFullBreakfastFood(meal: String): LiveData<List<BreakfastWithFoodTupleDbModel>>
 }

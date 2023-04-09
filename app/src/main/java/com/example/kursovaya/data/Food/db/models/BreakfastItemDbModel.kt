@@ -17,6 +17,7 @@ import com.example.kursovaya.data.Training.db.models.ExerciseItemDbModel
 )
 
 data class BreakfastItemDbModel (
+    val mealTime: String,
     val food_name: String,
     val weight: Int
 
