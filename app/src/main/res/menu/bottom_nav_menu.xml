@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/training"
+        android:title="Training"
+        android:icon="@drawable/ic_baseline_sports_basketball_24"
+       />
+    <item
+        android:id="@+id/home"
+        android:title="Main"
+        android:icon="@drawable/ic_baseline_home_24"
+        />
+    <item
+        android:id="@+id/food"
+        android:title="Food"
+        android:icon="@drawable/ic_baseline_food_bank_24"/>
+</menu>
