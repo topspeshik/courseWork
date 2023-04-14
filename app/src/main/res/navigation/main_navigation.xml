@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/trainingFragment">
+    app:startDestination="@id/foodFragment">
 
     <fragment
         android:id="@+id/trainingFragment"
@@ -80,7 +80,8 @@
         android:label="AddFoodFragment" >
         <action
             android:id="@+id/action_addFoodFragment_to_addMealFragment"
-            app:destination="@id/addMealFragment" />
+            app:destination="@id/addMealFragment"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -96,4 +97,9 @@
             android:name="nameMeal"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.kursovaya.presentation.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 </navigation>

@@ -2,17 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/training"
-        android:title="Training"
+        android:id="@+id/trainingFragment"
         android:icon="@drawable/ic_baseline_sports_basketball_24"
-       />
+        android:title="Training" />
     <item
-        android:id="@+id/home"
-        android:title="Main"
+        android:id="@+id/mainFragment"
         android:icon="@drawable/ic_baseline_home_24"
-        />
+        android:title="Main" />
     <item
-        android:id="@+id/food"
-        android:title="Food"
-        android:icon="@drawable/ic_baseline_food_bank_24"/>
+        android:id="@+id/foodFragment"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="Food" />
 </menu>

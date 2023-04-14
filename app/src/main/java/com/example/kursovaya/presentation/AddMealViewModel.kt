@@ -1,5 +1,7 @@
 package com.example.kursovaya.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kursovaya.domain.Food.db.BreakfastList.BreakfastItem
@@ -12,6 +14,9 @@ class AddMealViewModel @Inject constructor(
     private val addBreakfastItemUseCase: addBreakfastItemUseCase
 ): ViewModel() {
 
+    private val _shouldCloseScreen = MutableLiveData<Boolean>()
+    val shouldCloseScreen: LiveData<Boolean>
+        get() = _shouldCloseScreen
 
     fun addBreakfastItem(mealTime: String,name: String, weight: Int){
         viewModelScope.launch {
@@ -23,6 +28,8 @@ class AddMealViewModel @Inject constructor(
                 )
             )
         }
+
+        _shouldCloseScreen.value = true
     }
 
 }
