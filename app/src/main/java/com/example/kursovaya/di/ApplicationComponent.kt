@@ -1,10 +1,10 @@
 package com.example.kursovaya.di
 
 import android.app.Application
-import com.example.kursovaya.presentation.AddFoodFragment
-import com.example.kursovaya.presentation.AddMealFragment
-import com.example.kursovaya.presentation.FoodFragment
-import com.example.kursovaya.presentation.Training.StartTrainingAdapter.*
+import com.example.kursovaya.presentation.Food.AddFoodFragment
+import com.example.kursovaya.presentation.Food.AddMealFragment
+import com.example.kursovaya.presentation.Food.FoodFragment
+import com.example.kursovaya.presentation.Training.*
 import dagger.BindsInstance
 import dagger.Component
 

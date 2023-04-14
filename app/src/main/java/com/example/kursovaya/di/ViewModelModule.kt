@@ -1,10 +1,10 @@
 package com.example.kursovaya.di
 
 import androidx.lifecycle.ViewModel
-import com.example.kursovaya.presentation.AddFoodViewModel
-import com.example.kursovaya.presentation.AddMealViewModel
-import com.example.kursovaya.presentation.FoodViewModel
-import com.example.kursovaya.presentation.Training.StartTrainingAdapter.*
+import com.example.kursovaya.presentation.Food.AddFoodViewModel
+import com.example.kursovaya.presentation.Food.AddMealViewModel
+import com.example.kursovaya.presentation.Food.FoodViewModel
+import com.example.kursovaya.presentation.Training.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

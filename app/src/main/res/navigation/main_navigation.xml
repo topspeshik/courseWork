@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.TrainingFragment"
+        android:name="com.example.kursovaya.presentation.Training.TrainingFragment"
         android:label="fragment_train"
         tools:layout="@layout/fragment_training" >
         <action
@@ -17,11 +17,12 @@
         <action
             android:id="@+id/action_trainingFragment_to_startTrainFragment"
             app:destination="@id/startTrainFragment"
-            app:enterAnim="@android:anim/fade_in" />
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addDayFragment"
-        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.AddDayFragment"
+        android:name="com.example.kursovaya.presentation.Training.AddDayFragment"
         android:label="AddDayFragment" >
         <action
             android:id="@+id/action_addDayFragment_to_addExerciseFragment"
@@ -30,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/addExerciseFragment"
-        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.AddExerciseFragment"
+        android:name="com.example.kursovaya.presentation.Training.AddExerciseFragment"
         android:label="AddExerciseFragment" >
         <argument
             android:name="training"
@@ -38,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/startTrainFragment"
-        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.StartTrainFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainFragment"
         android:label="StartTrainFragment" >
         <argument
             android:name="day"
@@ -46,11 +47,12 @@
         <action
             android:id="@+id/action_startTrainFragment_to_trainingProcessFragment"
             app:destination="@id/trainingProcessFragment"
-            app:enterAnim="@android:anim/fade_in" />
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/trainingProcessFragment"
-        android:name="com.example.kursovaya.presentation.Training.StartTrainingAdapter.TrainingProcessFragment"
+        android:name="com.example.kursovaya.presentation.Training.TrainingProcessFragment"
         android:label="fragment_training_process"
         tools:layout="@layout/fragment_training_process" >
         <argument
@@ -67,16 +69,17 @@
     </fragment>
     <fragment
         android:id="@+id/foodFragment"
-        android:name="com.example.kursovaya.presentation.FoodFragment"
+        android:name="com.example.kursovaya.presentation.Food.FoodFragment"
         android:label="fragment_food"
         tools:layout="@layout/fragment_food" >
         <action
             android:id="@+id/action_foodFragment_to_addFoodFragment"
-            app:destination="@id/addFoodFragment" />
+            app:destination="@id/addFoodFragment"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
-        android:name="com.example.kursovaya.presentation.AddFoodFragment"
+        android:name="com.example.kursovaya.presentation.Food.AddFoodFragment"
         android:label="AddFoodFragment" >
         <action
             android:id="@+id/action_addFoodFragment_to_addMealFragment"
@@ -88,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/addMealFragment"
-        android:name="com.example.kursovaya.presentation.AddMealFragment"
+        android:name="com.example.kursovaya.presentation.Food.AddMealFragment"
         android:label="AddMealFragment" >
         <argument
             android:name="FoodItem"

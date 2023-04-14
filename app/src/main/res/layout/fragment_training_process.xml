@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#05071D"
-    tools:context=".presentation.Training.StartTrainingAdapter.TrainingProcessFragment">
+    tools:context=".presentation.Training.TrainingProcessFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
+                android:id="@+id/btn_back"
                 style="@style/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

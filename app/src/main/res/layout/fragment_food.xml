@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#05071D"
-    tools:context=".presentation.FoodFragment">
+    tools:context=".presentation.Food.FoodFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_bju"
