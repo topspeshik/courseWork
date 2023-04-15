@@ -1,8 +1,8 @@
 package com.example.kursovaya.di
 
 import android.app.Application
-import com.example.kursovaya.data.Food.db.BreakfastList.BreakfastListDao
-import com.example.kursovaya.data.Food.db.BreakfastList.BreakfastListRepositoryImpl
+import com.example.kursovaya.data.Food.db.MealsList.MealsListDao
+import com.example.kursovaya.data.Food.db.MealsList.MealsListRepositoryImpl
 import com.example.kursovaya.data.Food.db.FoodDatabase
 import com.example.kursovaya.data.Food.db.FoodNetwork.FoodNetworkListDao
 import com.example.kursovaya.data.Food.db.FoodNetwork.FoodNetworkRepositoryImpl
@@ -15,11 +15,10 @@ import com.example.kursovaya.data.Training.db.ExerciseList.ExerciseListRepositor
 import com.example.kursovaya.data.Training.db.NetworkList.NetworkListDao
 import com.example.kursovaya.data.Training.db.NetworkList.NetworkRepositoryImpl
 import com.example.kursovaya.data.Training.network.*
-import com.example.kursovaya.domain.Food.db.BreakfastList.BreakfastListRepository
+import com.example.kursovaya.domain.Food.db.MealsList.MealsListRepository
 import com.example.kursovaya.domain.Food.db.FoodNetwork.FoodNetworkRepository
 import com.example.kursovaya.domain.Food.network.FoodRepository
 import com.example.kursovaya.domain.Training.db.DayExerciseSettings.DayExerciseSettingsRepository
-import com.example.kursovaya.domain.Training.db.DayExerciseSettings.ExerciseWithNetworkTuple
 import com.example.kursovaya.domain.Training.db.ExerciseList.ExerciseListRepository
 import com.example.kursovaya.domain.Training.db.NetworkList.NetworkRepository
 import com.example.kursovaya.domain.Training.network.TrainingRepository
@@ -54,7 +53,7 @@ interface DataModule {
 
     @ApplicationScope
     @Binds
-    fun bindBreakfastListRepository(impl: BreakfastListRepositoryImpl): BreakfastListRepository
+    fun bindBreakfastListRepository(impl: MealsListRepositoryImpl): MealsListRepository
 
     @ApplicationScope
     @Binds
@@ -102,7 +101,7 @@ interface DataModule {
         @Provides
         fun provideBreakfastListDao(
             application: Application
-        ): BreakfastListDao {
+        ): MealsListDao {
             return FoodDatabase.getInstance(application).breakfastListDao()
         }
 

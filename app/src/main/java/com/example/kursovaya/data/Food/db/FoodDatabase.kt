@@ -4,15 +4,15 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.kursovaya.data.Food.db.BreakfastList.BreakfastListDao
+import com.example.kursovaya.data.Food.db.MealsList.MealsListDao
 import com.example.kursovaya.data.Food.db.FoodNetwork.FoodNetworkListDao
-import com.example.kursovaya.data.Food.db.models.BreakfastItemDbModel
+import com.example.kursovaya.data.Food.db.models.MealsItemDbModel
 import com.example.kursovaya.data.Food.db.models.FoodItemDbModel
 
 
 @Database(
     entities = [
-        BreakfastItemDbModel::class,
+        MealsItemDbModel::class,
         FoodItemDbModel::class
         ],
     version = 1,
@@ -20,7 +20,7 @@ import com.example.kursovaya.data.Food.db.models.FoodItemDbModel
 )
 abstract class FoodDatabase: RoomDatabase() {
 
-    abstract fun breakfastListDao(): BreakfastListDao
+    abstract fun breakfastListDao(): MealsListDao
     abstract fun foodNetworkListDao(): FoodNetworkListDao
 
 

@@ -97,9 +97,9 @@ class FoodFragment : Fragment() {
             var carb = 0
             var fats = 0
             listIt.forEach {
-                protein += ((it.breakfastItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.breakfastItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.breakfastItem.weight / 100) * (it.foodItem.fats))
+                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
+                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
+                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
 
             }
             binding.tvBfProteins.text = protein.toString()
@@ -112,8 +112,8 @@ class FoodFragment : Fragment() {
             listIt.forEach {
                 listFood.add(
                     FoodItemAdapter(
-                        it.breakfastItem.food_name,
-                        it.foodItem.kcal * it.breakfastItem.weight / 100
+                        it.mealsItem.food_name,
+                        it.foodItem.kcal * it.mealsItem.weight / 100
                     )
                 )
             }
@@ -143,9 +143,9 @@ class FoodFragment : Fragment() {
             var carb = 0
             var fats = 0
             listIt.forEach {
-                protein += ((it.breakfastItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.breakfastItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.breakfastItem.weight / 100) * (it.foodItem.fats))
+                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
+                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
+                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
 
             }
             binding.tvLProteins.text = protein.toString()
@@ -158,8 +158,8 @@ class FoodFragment : Fragment() {
             listIt.forEach {
                 listFood.add(
                     FoodItemAdapter(
-                        it.breakfastItem.food_name,
-                        it.foodItem.kcal * it.breakfastItem.weight / 100
+                        it.mealsItem.food_name,
+                        it.foodItem.kcal * it.mealsItem.weight / 100
                     )
                 )
             }
@@ -187,9 +187,9 @@ class FoodFragment : Fragment() {
             var carb = 0
             var fats = 0
             listIt.forEach {
-                protein += ((it.breakfastItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.breakfastItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.breakfastItem.weight / 100) * (it.foodItem.fats))
+                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
+                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
+                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
 
             }
             binding.tvDProteins.text = protein.toString()
@@ -202,8 +202,8 @@ class FoodFragment : Fragment() {
             listIt.forEach {
                 listFood.add(
                     FoodItemAdapter(
-                        it.breakfastItem.food_name,
-                        it.foodItem.kcal * it.breakfastItem.weight / 100
+                        it.mealsItem.food_name,
+                        it.foodItem.kcal * it.mealsItem.weight / 100
                     )
                 )
             }
@@ -231,9 +231,9 @@ class FoodFragment : Fragment() {
             var carb = 0
             var fats = 0
             listIt.forEach {
-                protein += ((it.breakfastItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.breakfastItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.breakfastItem.weight / 100) * (it.foodItem.fats))
+                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
+                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
+                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
 
             }
             binding.tvNProteins.text = protein.toString()
@@ -246,8 +246,8 @@ class FoodFragment : Fragment() {
             listIt.forEach {
                 listFood.add(
                     FoodItemAdapter(
-                        it.breakfastItem.food_name,
-                        it.foodItem.kcal * it.breakfastItem.weight / 100
+                        it.mealsItem.food_name,
+                        it.foodItem.kcal * it.mealsItem.weight / 100
                     )
                 )
             }
@@ -273,7 +273,7 @@ class FoodFragment : Fragment() {
         var proteins: Int
         var fats: Int
         var carb: Int
-        var kcal: Int
+
 
         with(binding) {
             proteins = tvBfProteins.text.toString().toInt() +
@@ -295,5 +295,9 @@ class FoodFragment : Fragment() {
             tvCarb.text = carb.toString()
             tvKkcal.text = kcal.toString()
         }
+    }
+
+    companion object {
+        var kcal = 0
     }
 }

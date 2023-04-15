@@ -1,11 +1,11 @@
-package com.example.kursovaya.domain.Food.db.BreakfastList
+package com.example.kursovaya.domain.Food.db.MealsList
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
 
 @Parcelize
-data class BreakfastItem @Inject constructor(
+data class MealsItem @Inject constructor(
     val mealTime: String,
     val food_name: String,
     val weight: Int,

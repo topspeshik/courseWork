@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -127,7 +128,10 @@ class TrainingProcessFragment : Fragment() {
 
 
     private fun setupAlert(){
+        binding.chronometer.stop()
         val builder = AlertDialog.Builder(context)
+        timerTime = SystemClock.elapsedRealtime() - binding.chronometer.base
+        Log.d("checktime", timerTime.toString())
         with(builder)
         {
             setTitle("Поздравляем")
@@ -137,5 +141,9 @@ class TrainingProcessFragment : Fragment() {
             }
             show()
         }
+    }
+
+    companion object {
+        var timerTime : Long = 0
     }
 }

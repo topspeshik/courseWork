@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.example.kursovaya.data.Training.db.models.ExerciseItemDbModel
 
 @Entity(
     tableName = "breakfast_items",
@@ -16,7 +15,7 @@ import com.example.kursovaya.data.Training.db.models.ExerciseItemDbModel
         )]
 )
 
-data class BreakfastItemDbModel (
+data class MealsItemDbModel (
     val mealTime: String,
     val food_name: String,
     val weight: Int

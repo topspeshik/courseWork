@@ -48,6 +48,7 @@ class TrainingAdapter : ListAdapter<DayExerciseSettings, TrainingViewHolder>(Tra
                 binding.ivCheckbox.setOnClickListener{
                     onActiveCheckBoxClickListener?.invoke(day.day_id)
                 }
+                binding.tvExercises.text = day.exercise_id.toString()+" упражнений"
             }
             is ItemDayDisabledBinding -> {
                 binding.tvDay.text = "День ${day.day_id}"
@@ -55,6 +56,8 @@ class TrainingAdapter : ListAdapter<DayExerciseSettings, TrainingViewHolder>(Tra
                 binding.ivCheckbox.setOnClickListener{
                     onInactiveCheckBoxClickListener?.invoke(day.day_id)
                 }
+                binding.tvExercises.text = day.exercise_id.toString()+" упражнений"
+
             }
         }
 
