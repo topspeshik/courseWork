@@ -56,11 +56,15 @@ class MainFragment : Fragment() {
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
                 val currentWeight = parseCount(s.toString())
-                val currentKcal = (66.5 + (13.75 * currentWeight) + (5.003 * 180) - (6.775 * 20)).toInt()
-                val totalKcal = currentKcal + lostKcal.toInt()-getKcal
-                binding.tvKcal.text = totalKcal.toString()
-                countProgressBar(currentKcal.toDouble(), totalKcal.toDouble())
-                countProgressHorizontal()
+
+                if (currentWeight!=0){
+                    val currentKcal = (66.5 + (13.75 * currentWeight) + (5.003 * 180) - (6.775 * 20)).toInt()
+                    val totalKcal = currentKcal + lostKcal.toInt()-getKcal
+                    binding.tvKcal.text = totalKcal.toString()
+                    countProgressBar(currentKcal.toDouble(), totalKcal.toDouble())
+                    countProgressHorizontal()
+                }
+
             }
         })
 
