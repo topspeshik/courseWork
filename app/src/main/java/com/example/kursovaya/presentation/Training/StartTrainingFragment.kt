@@ -13,9 +13,9 @@ import com.example.kursovaya.presentation.Training.StartTrainingAdapter.StartTra
 import javax.inject.Inject
 
 
-class StartTrainFragment : Fragment() {
+class StartTrainingFragment : Fragment() {
 
-    private val args by navArgs<StartTrainFragmentArgs>()
+    private val args by navArgs<StartTrainingFragmentArgs>()
     private lateinit var startTrainingAdapter: StartTrainingAdapter
     private lateinit var viewModel: StartTrainingViewModel
 
@@ -48,7 +48,7 @@ class StartTrainFragment : Fragment() {
             startTrainingAdapter.submitList(it)
             binding.btnStartTraining.setOnClickListener{ view->
                 findNavController().navigate(
-                    StartTrainFragmentDirections.actionStartTrainFragmentToTrainingProcessFragment(
+                    StartTrainingFragmentDirections.actionStartTrainFragmentToTrainingProcessFragment(
                         it.toTypedArray(),
                         args.day
                     )

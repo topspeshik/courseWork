@@ -23,7 +23,6 @@ abstract class FoodDatabase: RoomDatabase() {
     abstract fun breakfastListDao(): MealsListDao
     abstract fun foodNetworkListDao(): FoodNetworkListDao
 
-
     companion object {
 
         private var INSTANCE: FoodDatabase? = null

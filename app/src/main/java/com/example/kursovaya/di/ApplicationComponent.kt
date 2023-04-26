@@ -18,7 +18,7 @@ import dagger.Component
 )
 interface ApplicationComponent {
 
-    fun inject(fragment: StartTrainFragment)
+    fun inject(fragment: StartTrainingFragment)
 
     fun inject(fragment: AddDayFragment)
 

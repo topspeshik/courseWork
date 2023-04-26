@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/startTrainFragment"
-        android:name="com.example.kursovaya.presentation.Training.StartTrainFragment"
+        android:name="com.example.kursovaya.presentation.Training.StartTrainingFragment"
         android:label="StartTrainFragment" >
         <argument
             android:name="day"
@@ -76,6 +76,9 @@
             android:id="@+id/action_foodFragment_to_addFoodFragment"
             app:destination="@id/addFoodFragment"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_foodFragment_to_addMealFragment"
+            app:destination="@id/addMealFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
@@ -99,6 +102,12 @@
         <argument
             android:name="nameMeal"
             app:argType="string" />
+        <argument android:name="fragmentName"
+            app:argType="string" />
+        <argument
+            android:name="MealsItem"
+            app:argType="com.example.kursovaya.domain.Food.db.MealsList.MealsItem"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

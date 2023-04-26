@@ -20,4 +20,7 @@ interface MealsListDao {
 
     @Query("SELECT * FROM breakfast_items LEFT JOIN FoodNetwork_items ON breakfast_items.food_name = FoodNetwork_items.name WHERE mealTime = :meal ")
     fun getFullBreakfastFood(meal: String): LiveData<List<MealsWithFoodTupleDbModel>>
+
+    @Query("DELETE FROM breakfast_items WHERE id = :id ")
+    fun deleteMealsItem(id: Int)
 }

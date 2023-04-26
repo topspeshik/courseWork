@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+
 data class TrainingDto (
     @SerializedName("id")
     val id: String?,
@@ -14,4 +14,4 @@ data class TrainingDto (
     val urlimg: String?,
     @SerializedName("urlgif")
     val urlgif: String?
-) : Parcelable
+)

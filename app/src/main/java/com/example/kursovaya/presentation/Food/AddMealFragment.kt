@@ -2,6 +2,7 @@ package com.example.kursovaya.presentation.Food
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,12 +47,20 @@ class AddMealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this,viewModelFactory)[AddMealViewModel::class.java]
+
         with(binding){
             tvCarbs.text = args.foodItem.carb.toString()
             tvFats.text = args.foodItem.fats.toString()
             tvCarbs.text = args.foodItem.carb.toString()
             tvKcal.text = args.foodItem.kcal.toString()
 
+        }
+
+        if (args.fragmentName == "FoodFragment"){
+            binding.btnDeleteFood.visibility = View.VISIBLE
+            binding.btnDeleteFood.setOnClickListener{
+                viewModel.deleteMealsitem(args.mealsItem!!.id)
+            }
         }
 
         binding.btnSaveFood.setOnClickListener{
@@ -75,6 +84,8 @@ class AddMealFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
+
+
 
     private fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
