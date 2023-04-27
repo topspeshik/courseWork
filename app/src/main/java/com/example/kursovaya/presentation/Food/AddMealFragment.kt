@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.kursovaya.databinding.FragmentAddMealBinding
+import com.example.kursovaya.domain.Food.db.FoodNetwork.FoodItem
 import com.example.kursovaya.presentation.Training.TrainingApplication
 import com.example.kursovaya.presentation.Training.ViewModelFactory
 import javax.inject.Inject
@@ -21,6 +22,7 @@ import javax.inject.Inject
 class AddMealFragment : Fragment() {
 
     private val args by navArgs<AddMealFragmentArgs>()
+
 
     private var _binding: FragmentAddMealBinding? = null
     private val binding get() = _binding!!
@@ -48,26 +50,52 @@ class AddMealFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this,viewModelFactory)[AddMealViewModel::class.java]
 
-        with(binding){
-            tvCarbs.text = args.foodItem.carb.toString()
-            tvFats.text = args.foodItem.fats.toString()
-            tvCarbs.text = args.foodItem.carb.toString()
-            tvKcal.text = args.foodItem.kcal.toString()
 
-        }
+
 
         if (args.fragmentName == "FoodFragment"){
+             viewModel.getFoodItem(args.mealsItem!!.food_name).observe(viewLifecycleOwner){ listFood->
+                 with(binding){
+                     tvCarbs.text = listFood[0].carb.toString()
+                     tvFats.text = listFood[0].fats.toString()
+                     tvCarbs.text = listFood[0].carb.toString()
+                     tvKcal.text = listFood[0].kcal.toString()
+
+                 }
+                 binding.btnSaveFood.setOnClickListener{
+                     viewModel.addBreakfastItem(args.nameMeal,listFood[0].name , binding.etWeight.text.toString(), args.mealsItem!!.id)
+                     it.hideKeyboard()
+
+                 }
+            }
+
+
             binding.btnDeleteFood.visibility = View.VISIBLE
             binding.btnDeleteFood.setOnClickListener{
                 viewModel.deleteMealsitem(args.mealsItem!!.id)
+                findNavController().popBackStack()
+
             }
+        } else{
+
+            args.foodItem?.let { foodItem->
+                with(binding){
+                    tvCarbs.text = foodItem.carb.toString()
+                    tvFats.text = foodItem.fats.toString()
+                    tvCarbs.text = foodItem.carb.toString()
+                    tvKcal.text = foodItem.kcal.toString()
+
+                }
+//                binding.btnSaveFood.setOnClickListener{
+//                    viewModel.addBreakfastItem(args.nameMeal, foodItem.name, binding.etWeight.text.toString())
+//                    it.hideKeyboard()
+//
+//                }
+            }
+
         }
 
-        binding.btnSaveFood.setOnClickListener{
-            viewModel.addBreakfastItem(args.nameMeal, args.foodItem.name, binding.etWeight.text.toString())
-            it.hideKeyboard()
 
-        }
 
         viewModel.shouldCloseScreen.observe(viewLifecycleOwner){
             if (it)

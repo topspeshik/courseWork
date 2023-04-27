@@ -12,7 +12,8 @@ import androidx.room.PrimaryKey
             entity = FoodItemDbModel::class,
             parentColumns = ["name"],
             childColumns = ["food_name"]
-        )]
+        )],
+
 )
 
 data class MealsItemDbModel (

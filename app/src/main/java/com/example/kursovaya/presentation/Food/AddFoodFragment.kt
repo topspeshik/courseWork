@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.kursovaya.databinding.FragmentAddFoodBinding
+import com.example.kursovaya.domain.Food.db.FoodNetwork.FoodItem
 import com.example.kursovaya.presentation.Food.AddFoodAdapter.AddFoodAdapter
 import com.example.kursovaya.presentation.Training.TrainingApplication
 import com.example.kursovaya.presentation.Training.ViewModelFactory
@@ -78,8 +79,10 @@ class AddFoodFragment : Fragment() {
         addFoodAdapter.onFoodItemClickListener = {
             findNavController().navigate(
                 AddFoodFragmentDirections.actionAddFoodFragmentToAddMealFragment(
-                    it,
-                    args.name
+                   it,
+                    args.name,
+                    "AddFoodFragment",
+                    null
                 )
             )
         }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.kursovaya.databinding.FragmentFoodBinding
+import com.example.kursovaya.domain.Food.db.MealsList.MealsItem
 import com.example.kursovaya.presentation.Food.FoodAdapter.FoodAdapter
 import com.example.kursovaya.presentation.Food.FoodAdapter.FoodItemAdapter
 import com.example.kursovaya.presentation.Training.TrainingApplication
@@ -113,7 +114,9 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id,
+                        it.mealsItem.weight
                     )
                 )
             }
@@ -138,7 +141,7 @@ class FoodFragment : Fragment() {
 
     private fun setupLunch() {
         viewModel.getMealBJU("Обед").observe(viewLifecycleOwner) { listIt ->
-            Log.d("checkshitbju", listIt.toString())
+            Log.d("checkshitobed", listIt.toString())
             var protein = 0
             var carb = 0
             var fats = 0
@@ -159,13 +162,31 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id,
+                        it.mealsItem.weight
                     )
                 )
             }
-
-            binding.lvLunch.adapter = FoodAdapter(listFood)
+            val foodAdapter = FoodAdapter(listFood)
+            binding.lvLunch.adapter = foodAdapter
             setupUpper()
+            foodAdapter.onFoodItemClickListener = {
+                Log.d("checlsdsd", "dsadasdsa")
+                findNavController().navigate(
+                    FoodFragmentDirections.actionFoodFragmentToAddMealFragment(
+                       null,
+                       it.name,
+                        "FoodFragment",
+                        MealsItem(
+                            id = it.id,
+                            food_name = it.name,
+                            weight = it.weight,
+                            mealTime = "0"
+                        )
+                    )
+                )
+            }
         }
 
         binding.cvLunch.setOnClickListener {
@@ -177,6 +198,8 @@ class FoodFragment : Fragment() {
                 lunchState = false
             }
         }
+
+
 
     }
 
@@ -203,7 +226,9 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id,
+                        it.mealsItem.weight
                     )
                 )
             }
@@ -247,7 +272,9 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id,
+                        it.mealsItem.weight
                     )
                 )
             }

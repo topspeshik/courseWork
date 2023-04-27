@@ -98,7 +98,8 @@
         android:label="AddMealFragment" >
         <argument
             android:name="FoodItem"
-            app:argType="com.example.kursovaya.domain.Food.db.FoodNetwork.FoodItem" />
+            app:argType="com.example.kursovaya.domain.Food.db.FoodNetwork.FoodItem"
+            app:nullable="true" />
         <argument
             android:name="nameMeal"
             app:argType="string" />

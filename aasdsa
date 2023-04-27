@@ -1,0 +1,245 @@
+[33mcommit bcbed0dc146443314de8d892956798f6e3a9c321[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Wed Apr 26 20:54:08 2023 +0800
+
+    add btnDelete, doesnt work
+
+[33mcommit 1bff045f0e28ad9fd44e5b9aeb8c5456991bc2d5[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Apr 16 11:27:36 2023 +0800
+
+    bugfix
+
+[33mcommit b997eb5ef3984833e3616d3385842618702b5f2a[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Apr 15 17:51:33 2023 +0800
+
+    verison 1 is ready, clean architecture, mvvm in training, not finished in food and main fragment, and in general food and main fragment arent finished, cuz havent time
+
+[33mcommit f71a9b9feb034d90639b392ac576b96fd1025c56[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Apr 14 18:25:21 2023 +0800
+
+    a little bit refactoring and add back button
+
+[33mcommit f3f1a11fa44fd308b73e8c46861920528e89c35b[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Apr 14 14:14:37 2023 +0800
+
+    add bottomNavMenu, now it works
+
+[33mcommit ef774560e2c8868f0a24b7a31cdaa43e17eabe43[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Mon Apr 10 18:58:55 2023 +0800
+
+    doesnt work
+
+[33mcommit 4ed538e5942d4510a136b8f0d93ece426ddd1aab[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Apr 9 15:28:46 2023 +0800
+
+    kolhoz but rabotaet i ladno
+
+[33mcommit c6109d315b4a41466ac99daa474438c4a5a66e69[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Apr 8 20:20:25 2023 +0800
+
+    add a lot
+
+[33mcommit e3e514f06393577274c8d96360ce1eb5df1124f2[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Apr 7 19:49:56 2023 +0800
+
+    add breakfast vm
+
+[33mcommit c07a79c10502e7bc0e6392ba35a0b2201588d9b1[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Thu Apr 6 19:38:07 2023 +0800
+
+    add breakfast
+
+[33mcommit 95d18dcf37613fc8b2751f26ea91d4831c752867[m
+Author: speshik <speshik222@gmail.com>
+Date:   Thu Apr 6 08:30:09 2023 +0800
+
+    upd rel to frame
+
+[33mcommit daafd48328c17078db8a9da802dad41367d4e738[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Thu Mar 30 17:38:29 2023 +0800
+
+    it works, i love my life
+
+[33mcommit 38f0d7d48d2a25c3561d336482e6e01f6f9f8dab[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Mar 26 20:29:49 2023 +0800
+
+    doesnt work with di
+
+[33mcommit 39305dc2740dbc259bfb8948012b8e6aa87d20b9[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Mar 26 08:53:13 2023 +0800
+
+    fix clean without DI
+
+[33mcommit 84d80e21efbcb0f9a253de4bc91003a7b308ce7e[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Mar 25 20:50:49 2023 +0800
+
+    add clean without DI
+
+[33mcommit 8c275e70ed70691c331e999c901b9bf2b09e7fa0[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Mar 25 13:32:12 2023 +0800
+
+    add clean for exerciseList
+
+[33mcommit 9e94d64a932e81ca5ec275fd68719118d023b0cd[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Mar 25 11:27:46 2023 +0800
+
+    add clean for networkList
+
+[33mcommit dad6c2fcca3019b311e3aa748f72e87a7a4e9129[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 24 20:36:50 2023 +0800
+
+    add clean for network
+
+[33mcommit 6b511c35601132b65910a9445242013f736c57e0[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 24 15:58:54 2023 +0800
+
+    upd more
+
+[33mcommit 1b98e3232671d12ed6227337cfa4a438fa5b8fce[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 24 11:55:19 2023 +0800
+
+    upd trainingadapter
+
+[33mcommit 0463508964c963ac727c534b42929b2349908125[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Thu Mar 23 20:15:27 2023 +0800
+
+    a lot of changes...
+
+[33mcommit 1aed31ec9c32aa1cd05c8991178d9530ad9c4f60[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Mar 19 17:59:40 2023 +0800
+
+    doesnt work, add more tables
+
+[33mcommit cfeaed42ee2cb97126f0a3c73d11dde3f53ed16b[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Wed Mar 15 19:57:30 2023 +0800
+
+    jestky kolhoz
+
+[33mcommit 952c33f62ec210ac8a681170064bd58d21fe6e7e[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 10 18:46:12 2023 +0800
+
+    add animation n bugfix
+
+[33mcommit 6d0365e538d65874ee800fe642ea535cfe73d6e0[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 10 16:17:16 2023 +0800
+
+    add factory
+
+[33mcommit 1e061b3e96c0d4a9284b26cd204b560f474c5c47[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Thu Mar 9 20:07:42 2023 +0800
+
+    upd trainingProcess
+
+[33mcommit e420513778b3c9c6964c61d3b3cb58c99ab95f56[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Thu Mar 9 18:21:01 2023 +0800
+
+    add trainingProcess
+
+[33mcommit 8ae4e87784e14b96806614d87b74d6849e8e4a72[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Mar 4 18:02:58 2023 +0800
+
+    upd startTraining
+
+[33mcommit c93b10963799930d8892e8e4413cd11d1d30aa1f[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Mar 4 17:22:49 2023 +0800
+
+    add startTraining
+
+[33mcommit daaf63c8d2bde8abaf77c82a2584d95da9da22f1[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Mar 4 15:36:50 2023 +0800
+
+    add training
+
+[33mcommit c4a90ed295c9c2571ffe0ccef6d92d0e1bc72b39[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 3 17:55:52 2023 +0800
+
+    upd db
+
+[33mcommit 7e404bee16fc703d18f988bd1f8d9d9f310123ea[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Mar 3 12:57:54 2023 +0800
+
+    add db(doesnt work)
+
+[33mcommit 03f497985734e0c1bdb0260c29bfcf36049acbca[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Mon Feb 27 19:20:02 2023 +0800
+
+    add nav to AddExerciseFragment
+
+[33mcommit cf2a34685a3abdf1ac0bf102a62ca7a4200e3065[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Feb 26 19:03:31 2023 +0800
+
+    add img in adapter
+
+[33mcommit 1fa4369e40e85ad3a442ec749a9d09134e867dbb[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Feb 26 17:09:56 2023 +0800
+
+    add searchView
+
+[33mcommit a23e1de6cdee837ac8a27029d71d946e459d4e2b[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sun Feb 26 10:21:53 2023 +0800
+
+    upd nav
+
+[33mcommit 9bfa6e651da9789ec9fb35f70af45d45329e5daa[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Sat Feb 25 19:05:40 2023 +0800
+
+    add retrofit
+
+[33mcommit 7f423b645af8792e96d471578ebf3948aebda54a[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Feb 24 17:23:52 2023 +0800
+
+    add TrainFragment
+
+[33mcommit f2d70688e5c55f5fdee7c5a36367659b71751b4f[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Feb 24 14:24:01 2023 +0800
+
+    upd addExerciseFragment
+
+[33mcommit 6f07d071f909225ee190686bf82dd4e85ced619f[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Fri Feb 24 14:11:54 2023 +0800
+
+    add addExerciseFragment
+
+[33mcommit 06425f081ba68404d15081b5e750df7d36a9064e[m
+Author: Daniel <speshik222@gmail.com>
+Date:   Thu Feb 23 22:31:13 2023 +0800
+
+    Initial commit

@@ -1,13 +1,18 @@
 package com.example.kursovaya.presentation.Food.FoodAdapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.kursovaya.R
+import com.example.kursovaya.domain.Food.db.FoodNetwork.FoodItem
 
 class FoodAdapter (private val list: List<FoodItemAdapter>) : BaseAdapter() {
+
+    var onFoodItemClickListener: ((FoodItemAdapter) -> Unit)? = null
+
     override fun getCount(): Int {
         return list.size
     }
@@ -24,13 +29,19 @@ class FoodAdapter (private val list: List<FoodItemAdapter>) : BaseAdapter() {
         val viewHolder = ViewHolder()
         val view = p1 ?: LayoutInflater.from(p2?.context).inflate(
             R.layout.item_food, p2, false)
+        val food = getItem(p0) as FoodItemAdapter
         with(viewHolder) {
             parent = view
             name = view.findViewById(R.id.tv_name)
             kcal = view.findViewById(R.id.tv_kcal)
-            val food = getItem(p0) as FoodItemAdapter
+
             name.text = food.name
             kcal.text = food.kcal.toString() +"ккал"
+        }
+
+        view.setOnClickListener {
+            Log.d("checlsdsd", "dsadasdsa")
+            onFoodItemClickListener?.invoke(food)
         }
 
 

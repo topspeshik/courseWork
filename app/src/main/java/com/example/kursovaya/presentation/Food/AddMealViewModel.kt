@@ -1,5 +1,6 @@
 package com.example.kursovaya.presentation.Food
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,9 @@ import com.example.kursovaya.domain.Food.db.FoodNetwork.searchNameUseCase
 import com.example.kursovaya.domain.Food.db.MealsList.MealsItem
 import com.example.kursovaya.domain.Food.db.MealsList.addMealsItemUseCase
 import com.example.kursovaya.domain.Food.db.MealsList.deleteMealsItemUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 import javax.inject.Inject
 
@@ -27,17 +30,33 @@ class AddMealViewModel @Inject constructor(
     val errorInputCount: LiveData<Boolean>
         get() = _errorInputCount
 
-    fun addBreakfastItem(mealTime: String, name: String, inputWeight: String) {
+    fun addBreakfastItem(mealTime: String, name: String, inputWeight: String, id: Int? = null) {
         val weight = parseCount(inputWeight)
         if (validateInput(weight)) {
             viewModelScope.launch {
-                addMealsItemUseCase(
-                    MealsItem(
-                        mealTime,
-                        name,
-                        weight
-                    )
-                )
+               if (id != null) {
+                   Log.d("checkssss", id.toString())
+                   addMealsItemUseCase(
+                       MealsItem(
+                           mealTime,
+                           name,
+                           weight,
+                           id
+                       )
+                   )
+               } else {
+                   addMealsItemUseCase(
+                       MealsItem(
+                           mealTime,
+                           name,
+                           weight,
+                       )
+                   )
+               }
+
+
+
+
             }
 
             _shouldCloseScreen.value = true
@@ -46,7 +65,10 @@ class AddMealViewModel @Inject constructor(
 
     fun deleteMealsitem(id: Int){
         viewModelScope.launch {
-            deleteMealsItemUseCase(id)
+            withContext(Dispatchers.IO) {
+                deleteMealsItemUseCase(id)
+            }
+
         }
 
     }
