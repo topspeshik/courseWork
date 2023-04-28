@@ -10,4 +10,6 @@ interface MealsListRepository {
     suspend fun addBreakfastItem(mealsItem: MealsItem)
 
     fun getFullBreakfastFood(meal: String): LiveData<List<MealsWithFoodTuple>>
+
+    suspend fun deleteMealsItem(id: Int)
 }

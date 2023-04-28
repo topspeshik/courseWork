@@ -113,13 +113,18 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id
                     )
                 )
             }
-
-            binding.lvBreakfast.adapter = FoodAdapter(listFood)
+            val foodAdapter =  FoodAdapter(listFood)
+            binding.lvBreakfast.adapter = foodAdapter
             setupUpper()
+            foodAdapter.onFoodItemClickListener = {
+                viewModel.deleteMealsItem(it.Id)
+
+            }
         }
 
         binding.cvBreakfast.setOnClickListener {
@@ -159,13 +164,18 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id
                     )
                 )
             }
-
-            binding.lvLunch.adapter = FoodAdapter(listFood)
+            val foodAdapter =  FoodAdapter(listFood)
+            binding.lvLunch.adapter = foodAdapter
             setupUpper()
+            foodAdapter.onFoodItemClickListener = {
+                viewModel.deleteMealsItem(it.Id)
+
+            }
         }
 
         binding.cvLunch.setOnClickListener {
@@ -203,13 +213,19 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id
                     )
                 )
             }
-
-            binding.lvDinner.adapter = FoodAdapter(listFood)
+            val foodAdapter = FoodAdapter(listFood)
+            binding.lvDinner.adapter = foodAdapter
             setupUpper()
+
+            foodAdapter.onFoodItemClickListener = {
+                viewModel.deleteMealsItem(it.Id)
+
+            }
         }
 
         binding.cvDinner.setOnClickListener {
@@ -247,13 +263,18 @@ class FoodFragment : Fragment() {
                 listFood.add(
                     FoodItemAdapter(
                         it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100
+                        it.foodItem.kcal * it.mealsItem.weight / 100,
+                        it.mealsItem.id
                     )
                 )
             }
-
-            binding.lvSnack.adapter = FoodAdapter(listFood)
+            val foodAdapter = FoodAdapter(listFood)
+            binding.lvSnack.adapter = foodAdapter
             setupUpper()
+            foodAdapter.onFoodItemClickListener = {
+                viewModel.deleteMealsItem(it.Id)
+
+            }
 
         }
 

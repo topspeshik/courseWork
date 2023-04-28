@@ -2,5 +2,6 @@ package com.example.kursovaya.presentation.Food.FoodAdapter
 
 data class FoodItemAdapter (
     val name: String,
-    val kcal: Int
+    val kcal: Int,
+    val Id: Int
 )

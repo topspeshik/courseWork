@@ -20,6 +20,9 @@ class MealsListRepositoryImpl @Inject constructor(
     }
 
 
+    override suspend fun deleteMealsItem(id: Int) {
+        mealsListDao.deleteMealsItem(id)
+    }
 
     override suspend fun addBreakfastItem(mealsItem: MealsItem) {
         mealsListDao.addBreakfastItem(mapper.mapEntityToBreakfastDb(mealsItem))
