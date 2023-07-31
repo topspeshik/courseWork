@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.kursovaya.databinding.FragmentFoodBinding
+import com.example.kursovaya.domain.Food.db.MealsList.MealsWithFoodTuple
 import com.example.kursovaya.presentation.Food.FoodAdapter.FoodAdapter
 import com.example.kursovaya.presentation.Food.FoodAdapter.FoodItemAdapter
 import com.example.kursovaya.presentation.Training.TrainingApplication
@@ -54,6 +55,170 @@ class FoodFragment : Fragment() {
         setupSnack()
         setupUpper()
 
+        setupOnClickListeners()
+
+    }
+
+
+
+    private fun setupBreakfast() {
+        viewModel.getMealBJU("Завтрак").observe(viewLifecycleOwner) { listIt ->
+            setupFood("Breakfast",listIt)
+        }
+
+        binding.cvBreakfast.setOnClickListener {
+            if (!breakfastState) {
+                binding.lvBreakfast.visibility = View.VISIBLE
+                breakfastState = true
+            } else {
+                binding.lvBreakfast.visibility = View.GONE
+                breakfastState = false
+            }
+        }
+    }
+
+    private fun setupFood(mealsTime: String, listIt:  List<MealsWithFoodTuple>){
+        var protein = 0
+        var carb = 0
+        var fats = 0
+        listIt.forEach {
+            protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
+            carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
+            fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
+
+        }
+
+
+        val listFood: MutableList<FoodItemAdapter> = mutableListOf()
+
+        listIt.forEach {
+            listFood.add(
+                FoodItemAdapter(
+                    it.mealsItem.food_name,
+                    it.foodItem.kcal * it.mealsItem.weight / 100,
+                    it.mealsItem.id
+                )
+            )
+        }
+        val foodAdapter =  FoodAdapter(listFood)
+        when(mealsTime){
+            "Breakfast" -> {
+                binding.tvBfProteins.text = protein.toString()
+                binding.tvBfCarb.text = carb.toString()
+                binding.tvBfFats.text = fats.toString()
+                binding.lvBreakfast.adapter = foodAdapter
+            }
+            "Lunch" ->{
+                binding.tvLProteins.text = protein.toString()
+                binding.tvLCarb.text = carb.toString()
+                binding.tvLFats.text = fats.toString()
+                binding.lvLunch.adapter = foodAdapter
+
+            }
+            "Dinner" ->{
+                binding.tvDProteins.text = protein.toString()
+                binding.tvDCarb.text = carb.toString()
+                binding.tvDFats.text = fats.toString()
+                binding.lvDinner.adapter = foodAdapter
+
+            }
+            "Snack" ->{
+                binding.tvNProteins.text = protein.toString()
+                binding.tvNCarb.text = carb.toString()
+                binding.tvNFats.text = fats.toString()
+                binding.lvSnack.adapter = foodAdapter
+            }
+        }
+        setupUpper()
+        foodAdapter.onFoodItemClickListener = {
+            viewModel.deleteMealsItem(it.Id)
+        }
+
+
+
+
+
+    }
+
+    private fun setupLunch() {
+        viewModel.getMealBJU("Обед").observe(viewLifecycleOwner) { listIt ->
+            setupFood("Lunch",listIt)
+        }
+
+        binding.cvLunch.setOnClickListener {
+            if (!lunchState) {
+                binding.lvLunch.visibility = View.VISIBLE
+                lunchState = true
+            } else {
+                binding.lvLunch.visibility = View.GONE
+                lunchState = false
+            }
+        }
+
+    }
+
+    private fun setupDinner() {
+        viewModel.getMealBJU("Ужин").observe(viewLifecycleOwner) { listIt ->
+            setupFood("Dinner",listIt)
+        }
+
+        binding.cvDinner.setOnClickListener {
+            if (!dinnerState) {
+                binding.lvDinner.visibility = View.VISIBLE
+                dinnerState = true
+            } else {
+                binding.lvDinner.visibility = View.GONE
+                dinnerState = false
+            }
+        }
+
+    }
+
+    private fun setupSnack() {
+        viewModel.getMealBJU("Перекус").observe(viewLifecycleOwner) { listIt ->
+            setupFood("Snack",listIt)
+
+        }
+
+        binding.cvSnack.setOnClickListener {
+            if (!snackState) {
+                binding.lvSnack.visibility = View.VISIBLE
+                snackState = true
+            } else {
+                binding.lvSnack.visibility = View.GONE
+                snackState = false
+            }
+        }
+
+    }
+
+    private fun setupUpper() {
+        var proteins: Int
+        var fats: Int
+        var carb: Int
+
+        with(binding) {
+            proteins = tvBfProteins.text.toString().toInt() +
+                    tvLProteins.text.toString().toInt() +
+                    tvDProteins.text.toString().toInt() +
+                    tvNProteins.text.toString().toInt()
+            fats = tvBfFats.text.toString().toInt() +
+                    tvLFats.text.toString().toInt() +
+                    tvDFats.text.toString().toInt() +
+                    tvNFats.text.toString().toInt()
+            carb = tvBfCarb.text.toString().toInt() +
+                    tvLCarb.text.toString().toInt() +
+                    tvDCarb.text.toString().toInt() +
+                    tvNCarb.text.toString().toInt()
+            kcal = proteins*4 + fats*9 + carb*4
+            tvProteins.text = proteins.toString()
+            tvFat.text = fats.toString()
+            tvCarb.text = carb.toString()
+            tvKkcal.text = kcal.toString()
+        }
+    }
+
+    private fun setupOnClickListeners(){
         binding.ivBreakfastAdd.setOnClickListener {
             findNavController().navigate(
                 FoodFragmentDirections.actionFoodFragmentToAddFoodFragment(
@@ -84,237 +249,6 @@ class FoodFragment : Fragment() {
                     "Перекус"
                 )
             )
-        }
-
-
-    }
-
-
-    private fun setupBreakfast() {
-        viewModel.getMealBJU("Завтрак").observe(viewLifecycleOwner) { listIt ->
-            Log.d("checkshitbju", listIt.toString())
-            var protein = 0
-            var carb = 0
-            var fats = 0
-            listIt.forEach {
-                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
-
-            }
-            binding.tvBfProteins.text = protein.toString()
-            binding.tvBfCarb.text = carb.toString()
-            binding.tvBfFats.text = fats.toString()
-
-
-            val listFood: MutableList<FoodItemAdapter> = mutableListOf()
-
-            listIt.forEach {
-                listFood.add(
-                    FoodItemAdapter(
-                        it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100,
-                        it.mealsItem.id
-                    )
-                )
-            }
-            val foodAdapter =  FoodAdapter(listFood)
-            binding.lvBreakfast.adapter = foodAdapter
-            setupUpper()
-            foodAdapter.onFoodItemClickListener = {
-                viewModel.deleteMealsItem(it.Id)
-
-            }
-        }
-
-        binding.cvBreakfast.setOnClickListener {
-            if (!breakfastState) {
-                binding.lvBreakfast.visibility = View.VISIBLE
-                breakfastState = true
-            } else {
-                binding.lvBreakfast.visibility = View.GONE
-                breakfastState = false
-            }
-        }
-
-
-
-    }
-
-    private fun setupLunch() {
-        viewModel.getMealBJU("Обед").observe(viewLifecycleOwner) { listIt ->
-            Log.d("checkshitbju", listIt.toString())
-            var protein = 0
-            var carb = 0
-            var fats = 0
-            listIt.forEach {
-                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
-
-            }
-            binding.tvLProteins.text = protein.toString()
-            binding.tvLCarb.text = carb.toString()
-            binding.tvLFats.text = fats.toString()
-
-
-            val listFood: MutableList<FoodItemAdapter> = mutableListOf()
-
-            listIt.forEach {
-                listFood.add(
-                    FoodItemAdapter(
-                        it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100,
-                        it.mealsItem.id
-                    )
-                )
-            }
-            val foodAdapter =  FoodAdapter(listFood)
-            binding.lvLunch.adapter = foodAdapter
-            setupUpper()
-            foodAdapter.onFoodItemClickListener = {
-                viewModel.deleteMealsItem(it.Id)
-
-            }
-        }
-
-        binding.cvLunch.setOnClickListener {
-            if (!lunchState) {
-                binding.lvLunch.visibility = View.VISIBLE
-                lunchState = true
-            } else {
-                binding.lvLunch.visibility = View.GONE
-                lunchState = false
-            }
-        }
-
-    }
-
-    private fun setupDinner() {
-        viewModel.getMealBJU("Ужин").observe(viewLifecycleOwner) { listIt ->
-            Log.d("checkshitbju", listIt.toString())
-            var protein = 0
-            var carb = 0
-            var fats = 0
-            listIt.forEach {
-                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
-
-            }
-            binding.tvDProteins.text = protein.toString()
-            binding.tvDCarb.text = carb.toString()
-            binding.tvDFats.text = fats.toString()
-
-
-            val listFood: MutableList<FoodItemAdapter> = mutableListOf()
-
-            listIt.forEach {
-                listFood.add(
-                    FoodItemAdapter(
-                        it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100,
-                        it.mealsItem.id
-                    )
-                )
-            }
-            val foodAdapter = FoodAdapter(listFood)
-            binding.lvDinner.adapter = foodAdapter
-            setupUpper()
-
-            foodAdapter.onFoodItemClickListener = {
-                viewModel.deleteMealsItem(it.Id)
-
-            }
-        }
-
-        binding.cvDinner.setOnClickListener {
-            if (!dinnerState) {
-                binding.lvDinner.visibility = View.VISIBLE
-                dinnerState = true
-            } else {
-                binding.lvDinner.visibility = View.GONE
-                dinnerState = false
-            }
-        }
-
-    }
-
-    private fun setupSnack() {
-        viewModel.getMealBJU("Перекус").observe(viewLifecycleOwner) { listIt ->
-            Log.d("checkshitbju", listIt.toString())
-            var protein = 0
-            var carb = 0
-            var fats = 0
-            listIt.forEach {
-                protein += ((it.mealsItem.weight / 100) * (it.foodItem.proteins))
-                carb += ((it.mealsItem.weight / 100) * (it.foodItem.carb))
-                fats += ((it.mealsItem.weight / 100) * (it.foodItem.fats))
-
-            }
-            binding.tvNProteins.text = protein.toString()
-            binding.tvNCarb.text = carb.toString()
-            binding.tvNFats.text = fats.toString()
-
-
-            val listFood: MutableList<FoodItemAdapter> = mutableListOf()
-
-            listIt.forEach {
-                listFood.add(
-                    FoodItemAdapter(
-                        it.mealsItem.food_name,
-                        it.foodItem.kcal * it.mealsItem.weight / 100,
-                        it.mealsItem.id
-                    )
-                )
-            }
-            val foodAdapter = FoodAdapter(listFood)
-            binding.lvSnack.adapter = foodAdapter
-            setupUpper()
-            foodAdapter.onFoodItemClickListener = {
-                viewModel.deleteMealsItem(it.Id)
-
-            }
-
-        }
-
-        binding.cvSnack.setOnClickListener {
-            if (!snackState) {
-                binding.lvSnack.visibility = View.VISIBLE
-                snackState = true
-            } else {
-                binding.lvSnack.visibility = View.GONE
-                snackState = false
-            }
-        }
-
-    }
-
-    private fun setupUpper() {
-        var proteins: Int
-        var fats: Int
-        var carb: Int
-
-
-        with(binding) {
-            proteins = tvBfProteins.text.toString().toInt() +
-                    tvLProteins.text.toString().toInt() +
-                    tvDProteins.text.toString().toInt() +
-                    tvNProteins.text.toString().toInt()
-            fats = tvBfFats.text.toString().toInt() +
-                    tvLFats.text.toString().toInt() +
-                    tvDFats.text.toString().toInt() +
-                    tvNFats.text.toString().toInt()
-            carb = tvBfCarb.text.toString().toInt() +
-                    tvLCarb.text.toString().toInt() +
-                    tvDCarb.text.toString().toInt() +
-                    tvNCarb.text.toString().toInt()
-            kcal = proteins*4 + fats*9 + carb*4
-            Log.d("checkshitupper", tvBfProteins.text.toString())
-            tvProteins.text = proteins.toString()
-            tvFat.text = fats.toString()
-            tvCarb.text = carb.toString()
-            tvKkcal.text = kcal.toString()
         }
     }
 
